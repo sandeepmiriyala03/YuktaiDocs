@@ -1,20 +1,20 @@
-# Netlify: plain HTML, no build step. "publish" is the repository root.
+
+# Netlify: plain HTML, no build step. Publish repository root.
 [build]
   publish = "."
   command = ""
 
 # Security headers for every page.
-# 'wasm-unsafe-eval' lets YuktAI's Rust engines (WebAssembly) run.
 [[headers]]
   for = "/*"
   [headers.values]
-    Content-Security-Policy = "default-src 'self'; script-src 'self' https://cdn.jsdelivr.net https://unpkg.com 'wasm-unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; connect-src 'self' https://cdn.jsdelivr.net https://unpkg.com https://data.jsdelivr.com; font-src 'self' data:; manifest-src 'self'; worker-src 'self'; media-src 'self' blob:; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'"
+    Content-Security-Policy = "default-src 'self'; script-src 'self' https://cdn.jsdelivr.net https://unpkg.com https://www.googletagmanager.com 'wasm-unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https://www.google-analytics.com https://www.googletagmanager.com; connect-src 'self' https://cdn.jsdelivr.net https://unpkg.com https://data.jsdelivr.net https://www.google-analytics.com https://analytics.google.com https://region1.google-analytics.com; font-src 'self' data:; manifest-src 'self'; worker-src 'self'; media-src 'self' blob:; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'"
     X-Content-Type-Options = "nosniff"
     Referrer-Policy = "strict-origin-when-cross-origin"
     Permissions-Policy = "camera=(), geolocation=(), microphone=(self)"
     X-Frame-Options = "DENY"
 
-# The service worker must never be cached by the browser, or updates stall.
+# The service worker must never be cached by the browser.
 [[headers]]
   for = "/sw.js"
   [headers.values]

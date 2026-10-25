@@ -7,15 +7,13 @@
 <meta name="theme-color" content="#0a0f1c" media="(prefers-color-scheme: dark)">
 <meta name="theme-color" content="#f6f8fb" media="(prefers-color-scheme: light)">
 <meta name="description" content="YuktAI Rust/WebAssembly engines for grid search and page RAG: benchmark against TypeScript on your own data size.">
-<!-- Google Analytics 4 -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-RFVRJ0S1DZ"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'G-RFVRJ0S1DZ');
 </script>
-<title>Rust engines · YuktaiDocs</title>
+<title>Rust engines Â· YuktaiDocs</title>
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" href="icons/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="icons/icon-192.png" sizes="192x192" type="image/png">
@@ -24,6 +22,7 @@
 <meta name="apple-mobile-web-app-title" content="YuktaiDocs">
 <link rel="stylesheet" href="assets/css/site.css">
 <script src="assets/js/theme.js"></script>
+  <script src="assets/js/analytics.js" defer></script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -42,7 +41,7 @@
 <div class="layout">
   <nav class="sidenav" aria-label="Documentation">
     <h2>YuktAI docs</h2>
-    <button type="button" class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-list"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-menu"/></svg><span>Menu · Rust engines</span><svg class="i chev" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-arrowDown"/></svg></button>
+    <button type="button" class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-list"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-menu"/></svg><span>Menu Â· Rust engines</span><svg class="i chev" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-arrowDown"/></svg></button>
     <ul id="nav-list"><li><a href="./"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-home"/></svg>Home</a></li><li><a href="accessibility.html"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-accessibility"/></svg>Accessibility</a></li><li><a href="grid.html"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-grid"/></svg>Data grid</a></li><li><a href="agents.html"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-robot"/></svg>Grid agents</a></li><li><a href="ask.html"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-chat"/></svg>Ask page (RAG)</a></li><li><a href="page-tools.html"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-tools"/></svg>Page tools</a></li><li><a href="nextjs.html"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-code"/></svg>Next.js setup</a></li><li><a href="icons.html"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-star"/></svg>Icon studio</a></li><li><a href="playground.html"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-dataObject"/></svg>Function playground</a></li><li><a href="rust.html" aria-current="page"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-speed"/></svg>Rust engines</a></li></ul>
     <p class="side-note">Every demo runs YuktAI <span class="ver-text">5.3.9</span> in your browser. No API keys, no server.</p>
   </nav>
@@ -50,7 +49,7 @@
     <div class="page-head">
       <p class="kicker"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-speed"/></svg>Rust engines</p>
       <h1>Rust engines</h1><p class="lead">YuktAI has two optional engines written in Rust and compiled to WebAssembly: grid search and number/date sorting, and the page RAG search. They return exactly the same results as TypeScript, only faster on big data. Time them here on your own sizes.</p></div>
-<ul class="status-list" id="rs-support" aria-live="polite"><li><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-info"/></svg>Checking WebAssembly…</li></ul>
+<ul class="status-list" id="rs-support" aria-live="polite"><li><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-info"/></svg>Checking WebAssemblyâ€¦</li></ul>
 <h2 id="grid">1. Grid: TypeScript vs Rust</h2>
 <div class="demo"><p class="demo-label"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-play"/></svg>Benchmark</p>
   <form class="controls" id="rs-form">
@@ -67,7 +66,7 @@ import { YuktaiGrid } from "@yuktishaalaa/yuktai"
   columns={columns}
   rowKey="id"
   engine="auto"          // "ts" | "rust" | "auto" (Rust from 10,000 rows)
-  showSearchTime         // "· 0.9 ms · Rust" next to the row count
+  showSearchTime         // "Â· 0.9 ms Â· Rust" next to the row count
   onSearchTime={(t) =&gt; console.log(t.ms, t.engine)}
 /&gt;</code></pre></div></div><div role="tabpanel" id="rs-code-vanilla" aria-labelledby="rs-code-vanilla-tab" hidden><div class="codefile"><div class="codehead"><span class="file" id="rs-code-vanilla-code-name">app.js</span><button type="button" class="copy-btn" data-what="app.js"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-copy"/></svg><span class="copy-label">Copy</span><span class="sr-only"> app.js</span></button></div><pre><code id="rs-code-vanilla-code">const grid = yuktai.renderGrid("#staff", {
   data: rows, columns, rowKey: "id",
@@ -100,8 +99,8 @@ const hits = index.search("security engineer in chennai", 5)</code></pre></div><
 </div>
 <footer class="footer">
   <div class="footer-in">
-    <span>© <span id="year">2026</span> YuktAI · Yuktishaalaa AI Lab · GPL-3.0</span>
-    <span><a href="https://www.npmjs.com/package/@yuktishaalaa/yuktai" target="_blank" rel="noopener noreferrer">npm<span class="sr-only"> (opens in a new tab)</span></a> · <a href="https://github.com/sandeepmiriyala03/yuktai" target="_blank" rel="noopener noreferrer">GitHub<span class="sr-only"> (opens in a new tab)</span></a> · <a href="https://aksharatantra.miriyala.in" target="_blank" rel="noopener noreferrer">Aksharatantra<span class="sr-only"> (opens in a new tab)</span></a></span>
+    <span>Â© <span id="year">2026</span> YuktAI Â· Yuktishaalaa AI Lab Â· GPL-3.0</span>
+    <span><a href="https://www.npmjs.com/package/@yuktishaalaa/yuktai" target="_blank" rel="noopener noreferrer">npm<span class="sr-only"> (opens in a new tab)</span></a> Â· <a href="https://github.com/sandeepmiriyala03/yuktai" target="_blank" rel="noopener noreferrer">GitHub<span class="sr-only"> (opens in a new tab)</span></a> Â· <a href="https://aksharatantra.miriyala.in" target="_blank" rel="noopener noreferrer">Aksharatantra<span class="sr-only"> (opens in a new tab)</span></a></span>
   </div>
 </footer>
 <div class="net" id="net" role="status" aria-live="polite" hidden></div>
