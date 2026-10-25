@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#0a0f1c" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#f6f8fb" media="(prefers-color-scheme: light)">
+<meta name="description" content="YuktAI grid agents: question bar, assistant with Telugu rules, standalone agent, grid tools, WebMCP and multi-step tasks, with Next.js and vanilla code.">
+<title>Grid agents · YuktaiDocs</title>
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icons/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="icons/icon-192.png" sizes="192x192" type="image/png">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="YuktaiDocs">
+<link rel="stylesheet" href="assets/css/site.css">
+<script src="assets/js/theme.js"></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="topbar">
+  <div class="topbar-in">
+    <a class="brand" href="./"><span class="brandmark"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-namaskar"/></svg></span><span>YuktaiDocs</span></a>
+    <span class="ver-chip" title="YuktAI version used on this site">v<span class="ver-text">5.3.9</span></span>
+    <div class="tools">
+      <button type="button" class="install-btn" id="install-btn" hidden><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-install"/></svg><span>Install app</span></button>
+      <span class="icon-btn net-chip" id="net-chip" role="img" aria-label="Network status"></span>
+      <button type="button" class="icon-btn" id="theme-btn" aria-pressed="false"><span id="theme-icon"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-moon"/></svg></span><span class="sr-only">Dark theme</span></button>
+    </div>
+  </div>
+</header>
+<div class="banner" id="docs-banner" role="status" hidden></div>
+<div class="layout">
+  <nav class="sidenav" aria-label="Documentation">
+    <h2>YuktAI docs</h2>
+    <button type="button" class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-list"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-menu"/></svg><span>Menu · Grid agents</span><svg class="i chev" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-arrowDown"/></svg></button>
+    <ul id="nav-list"><li><a href="./"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-home"/></svg>Home</a></li><li><a href="accessibility.html"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-accessibility"/></svg>Accessibility</a></li><li><a href="grid.html"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-grid"/></svg>Data grid</a></li><li><a href="agents.html" aria-current="page"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-robot"/></svg>Grid agents</a></li><li><a href="ask.html"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-chat"/></svg>Ask page (RAG)</a></li><li><a href="page-tools.html"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-tools"/></svg>Page tools</a></li><li><a href="nextjs.html"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-code"/></svg>Next.js setup</a></li><li><a href="icons.html"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-star"/></svg>Icon studio</a></li><li><a href="playground.html"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-dataObject"/></svg>Function playground</a></li><li><a href="rust.html"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-speed"/></svg>Rust engines</a></li></ul>
+    <p class="side-note">Every demo runs YuktAI <span class="ver-text">5.3.9</span> in your browser. No API keys, no server.</p>
+  </nav>
+  <main id="main" tabindex="-1">
+    <div class="page-head">
+      <p class="kicker"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-robot"/></svg>Grid agents</p>
+      <h1>Grid agents</h1><p class="lead">Ask your data in plain words. YuktAI turns a question into filters, sorting and summaries with rules, not a remote model, so it is instant, private and gives the same answer every time.</p></div>
+<h2 id="bar" style="margin-top:8px">1. Question bar and assistant on a grid</h2>
+<p>Try the example buttons, or type your own question. The assistant (the chat button inside the grid) also takes voice and Telugu custom rules such as <code>ఎక్కువ జీతం</code>.</p>
+<div class="demo"><p class="demo-label"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-play"/></svg>Live demo</p>
+  <div id="ag-grid" data-needs-yuktai><p class="loading-note">Loading…</p></div>
+  <p class="live-line" id="ag-line" aria-live="polite"></p>
+  <p class="hint" id="ag-webmcp">WebMCP: checking…</p></div><div class="codetabs" data-codetabs><div class="tablist" role="tablist" aria-label="Code"><button type="button" role="tab" id="ag-code-next-tab" data-fw="next" aria-controls="ag-code-next" aria-selected="true" tabindex="0"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-code"/></svg>Next.js / React</button><button type="button" role="tab" id="ag-code-vanilla-tab" data-fw="vanilla" aria-controls="ag-code-vanilla" aria-selected="false" tabindex="-1"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-file"/></svg>Vanilla JS</button></div><div role="tabpanel" id="ag-code-next" aria-labelledby="ag-code-next-tab"><div class="codefile"><div class="codehead"><span class="file" id="ag-code-next-code-name">app/staff/page.tsx</span><button type="button" class="copy-btn" data-what="app/staff/page.tsx"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-copy"/></svg><span class="copy-label">Copy</span><span class="sr-only"> app/staff/page.tsx</span></button></div><pre><code id="ag-code-next-code">"use client"
+import { YuktaiGrid, useAgenticGrid, AgenticGridBar } from "@yuktishaalaa/yuktai"
+import { rows, columns } from "./data"
+
+export default function StaffPage() {
+  // The question bar filters/sorts the rows; the grid shows the result.
+  const agent = useAgenticGrid({ data: rows, columns, rowKey: "id" })
+  return (
+    &lt;main&gt;
+      &lt;AgenticGridBar
+        grid={agent}
+        examples={["salary over 1 lakh", "Engineering in Hyderabad", "average salary by department"]}
+      /&gt;
+      &lt;YuktaiGrid
+        data={agent.gridData}
+        highlightIds={agent.highlightIds}
+        columns={columns}
+        rowKey="id"
+        ai
+        inputLanguage="en-IN"
+        webmcp
+        toolName="staff_grid"
+        customRules={[
+          {
+            name: "high-earners",
+            phrases: ["high earners", "ఎక్కువ జీతం", "ज़्यादा वेतन"],
+            execute: async ({ executeTool }) =&gt;
+              (await executeTool("filter", { key: "salary", operator: "greaterThan", value: 100000 })).message,
+          },
+        ]}
+      /&gt;
+    &lt;/main&gt;
+  )
+}</code></pre></div></div><div role="tabpanel" id="ag-code-vanilla" aria-labelledby="ag-code-vanilla-tab" hidden><div class="codefile"><div class="codehead"><span class="file" id="ag-code-vanilla-code-name">staff.html</span><button type="button" class="copy-btn" data-what="staff.html"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-copy"/></svg><span class="copy-label">Copy</span><span class="sr-only"> staff.html</span></button></div><pre><code id="ag-code-vanilla-code">&lt;div id="staff"&gt;&lt;/div&gt;
+&lt;script&gt;
+  const grid = yuktai.renderGrid("#staff", {
+    data: rows,
+    columns,
+    rowKey: "id",
+    agentic: {
+      title: "Ask about the staff data",
+      examples: ["salary over 1 lakh", "Engineering in Hyderabad", "average salary by department"]
+    },
+    ai: true,                       // assistant with voice input
+    inputLanguage: "en-IN",
+    webmcp: true,                   // tools for browser AI agents
+    toolName: "staff_grid",
+    customRules: [{
+      name: "high-earners",
+      phrases: ["high earners", "ఎక్కువ జీతం", "ज़्यादा वेतन"],
+      execute: async (ctx) =&gt;
+        (await ctx.executeTool("filter", { key: "salary", operator: "greaterThan", value: 100000 })).message
+    }],
+    onAgentResult: (r) =&gt; console.log(r.success, r.message)
+  })
+
+  // or from code:
+  await grid.ask("salary over 1 lakh in Hyderabad")
+  await grid.askDetailed("average salary by department")   // { answer, kind, table, steps, … }
+&lt;/script&gt;</code></pre></div></div></div>
+<h2 id="standalone">2. Agent without the grid (your own table)</h2>
+<p>Use the question bar with any table: the agent gives you the rows to show and the IDs to highlight.</p>
+<div class="demo"><p class="demo-label"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-play"/></svg>Live demo</p>
+  <div id="ag-bar" data-needs-yuktai></div>
+  <pre class="out" id="ag-rows" aria-live="polite"></pre></div><div class="codetabs" data-codetabs><div class="tablist" role="tablist" aria-label="Code"><button type="button" role="tab" id="ag2-code-next-tab" data-fw="next" aria-controls="ag2-code-next" aria-selected="true" tabindex="0"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-code"/></svg>Next.js / React</button><button type="button" role="tab" id="ag2-code-vanilla-tab" data-fw="vanilla" aria-controls="ag2-code-vanilla" aria-selected="false" tabindex="-1"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-file"/></svg>Vanilla JS</button></div><div role="tabpanel" id="ag2-code-next" aria-labelledby="ag2-code-next-tab"><div class="codefile"><div class="codehead"><span class="file" id="ag2-code-next-code-name">app/MyTable.tsx</span><button type="button" class="copy-btn" data-what="app/MyTable.tsx"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-copy"/></svg><span class="copy-label">Copy</span><span class="sr-only"> app/MyTable.tsx</span></button></div><pre><code id="ag2-code-next-code">"use client"
+import { useAgenticGrid, AgenticGridBar } from "@yuktishaalaa/yuktai"
+
+export function MyTable({ rows, columns }) {
+  const agent = useAgenticGrid({ data: rows, columns, rowKey: "id" })
+  return (
+    &lt;&gt;
+      &lt;AgenticGridBar grid={agent} examples={["salary under 60k", "total salary by city"]} /&gt;
+      &lt;table&gt;
+        &lt;tbody&gt;
+          {agent.gridData.map((r) =&gt; (
+            &lt;tr key={r.id} aria-current={agent.highlightIds.includes(String(r.id)) || undefined}&gt;
+              &lt;td&gt;{r.name}&lt;/td&gt;&lt;td&gt;{r.city}&lt;/td&gt;&lt;td&gt;{r.salary}&lt;/td&gt;
+            &lt;/tr&gt;
+          ))}
+        &lt;/tbody&gt;
+      &lt;/table&gt;
+    &lt;/&gt;
+  )
+}</code></pre></div></div><div role="tabpanel" id="ag2-code-vanilla" aria-labelledby="ag2-code-vanilla-tab" hidden><div class="codefile"><div class="codehead"><span class="file" id="ag2-code-vanilla-code-name">app.js</span><button type="button" class="copy-btn" data-what="app.js"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-copy"/></svg><span class="copy-label">Copy</span><span class="sr-only"> app.js</span></button></div><pre><code id="ag2-code-vanilla-code">const agentic = yuktai.createAgenticGrid({ data: rows, columns, rowKey: "id" })
+yuktai.mountAgenticGridBar("#bar", agentic, { examples: ["salary under 60k", "total salary by city"] })
+
+agentic.subscribe((s) =&gt; drawMyTable(s.gridData, s.highlightIds))</code></pre></div></div></div>
+<h2 id="tools">3. Grid tools and the phrase agent</h2>
+<p>The grid tools (search, count, columns, get row, filter, clear filters, sort, clear sort, plus highlight, select and open when you pass their handlers: up to 11) can be driven by the phrase agent, by your own code, or by a browser AI agent through WebMCP. Results are always <code>{ success, message, data?, error? }</code> and never throw.</p>
+<div class="demo"><p class="demo-label"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-play"/></svg>Live demo</p>
+  <form class="controls" id="ag3-form" style="grid-template-columns:minmax(0,1fr) auto;align-items:end">
+    <div class="field"><label for="ag3-q">Say something to the agent</label><input id="ag3-q" value="sort by salary desc" autocomplete="off"></div>
+    <button type="submit" class="btn primary"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-send"/></svg>Run</button>
+  </form>
+  <div class="btn-row" id="ag3-examples"></div>
+  <pre class="out" id="ag3-out" aria-live="polite"></pre></div><div class="codetabs" data-codetabs><div class="tablist" role="tablist" aria-label="Code"><button type="button" role="tab" id="ag3-code-next-tab" data-fw="next" aria-controls="ag3-code-next" aria-selected="true" tabindex="0"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-code"/></svg>Next.js / React</button><button type="button" role="tab" id="ag3-code-vanilla-tab" data-fw="vanilla" aria-controls="ag3-code-vanilla" aria-selected="false" tabindex="-1"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-file"/></svg>Vanilla JS</button></div><div role="tabpanel" id="ag3-code-next" aria-labelledby="ag3-code-next-tab"><div class="codefile"><div class="codehead"><span class="file" id="ag3-code-next-code-name">lib/staffAgent.ts</span><button type="button" class="copy-btn" data-what="lib/staffAgent.ts"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-copy"/></svg><span class="copy-label">Copy</span><span class="sr-only"> lib/staffAgent.ts</span></button></div><pre><code id="ag3-code-next-code">import { createGridTools, useYuktaiGridAgent, parseGridIntent } from "@yuktishaalaa/yuktai"
+
+// In a component: const agent = useYuktaiGridAgent({ tools, columns, customRules, locale: "te" })
+const tools = createGridTools(
+  { data: rows, columns, rowKey: "id", onFiltersChange: setFilters, onSortChange: setSort },
+  { name: "staff_grid" }
+)
+const result = await tools.find((t) =&gt; t.name.endsWith("count")).execute({})
+parseGridIntent("sort by salary desc", { columns })   // which tool to run, with its arguments</code></pre></div></div><div role="tabpanel" id="ag3-code-vanilla" aria-labelledby="ag3-code-vanilla-tab" hidden><div class="codefile"><div class="codehead"><span class="file" id="ag3-code-vanilla-code-name">app.js</span><button type="button" class="copy-btn" data-what="app.js"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-copy"/></svg><span class="copy-label">Copy</span><span class="sr-only"> app.js</span></button></div><pre><code id="ag3-code-vanilla-code">const tools = yuktai.createGridTools(
+  { data: rows, columns, rowKey: "id", onFiltersChange, onSortChange },
+  { name: "staff_grid" }
+)
+const agent = yuktai.createGridAgent({ tools, columns, customRules, locale: "te" })
+const result = await agent.ask("sort by salary desc")   // { success, message, tool, … }
+
+// Browser AI agents (Chrome WebMCP): register the same tools
+yuktai.registerWebMCP(tools, { onStatusChange: (s) =&gt; console.log(s.state, s.registered) })</code></pre></div></div></div>
+<h2 id="tasks">4. Multi-step tasks</h2>
+<p>Join steps with “then”: YuktAI plans the steps, runs them in order on the data and reports each one.</p>
+<div class="demo"><p class="demo-label"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-play"/></svg>Live demo</p>
+  <form class="controls" id="ag4-form" style="grid-template-columns:minmax(0,1fr) auto;align-items:end">
+    <div class="field"><label for="ag4-q">Instruction</label><input id="ag4-q" value="show salary over 1 lakh, then sort by joined, then summarize" autocomplete="off"></div>
+    <button type="submit" class="btn primary"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-play"/></svg>Plan and run</button>
+  </form>
+  <pre class="out" id="ag4-out" aria-live="polite"></pre></div><div class="codetabs" data-codetabs><div class="tablist" role="tablist" aria-label="Code"><button type="button" role="tab" id="ag4-code-next-tab" data-fw="next" aria-controls="ag4-code-next" aria-selected="true" tabindex="0"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-code"/></svg>Next.js / React</button><button type="button" role="tab" id="ag4-code-vanilla-tab" data-fw="vanilla" aria-controls="ag4-code-vanilla" aria-selected="false" tabindex="-1"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-file"/></svg>Vanilla JS</button></div><div role="tabpanel" id="ag4-code-next" aria-labelledby="ag4-code-next-tab"><div class="codefile"><div class="codehead"><span class="file" id="ag4-code-next-code-name">lib/tasks.ts</span><button type="button" class="copy-btn" data-what="lib/tasks.ts"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-copy"/></svg><span class="copy-label">Copy</span><span class="sr-only"> lib/tasks.ts</span></button></div><pre><code id="ag4-code-next-code">import { planTasks, runTasks, toGridToolColumns } from "@yuktishaalaa/yuktai"
+
+const plan = planTasks("show salary over 1 lakh, then sort by joined, then summarize")
+const result = await runTasks(
+  "show salary over 1 lakh, then sort by joined, then summarize",
+  { data: rows, columns: toGridToolColumns(columns), rowKey: "id" },
+  { onStep: (step, i, total) =&gt; console.log(`${i + 1}/${total}`, step.message) }
+)</code></pre></div></div><div role="tabpanel" id="ag4-code-vanilla" aria-labelledby="ag4-code-vanilla-tab" hidden><div class="codefile"><div class="codehead"><span class="file" id="ag4-code-vanilla-code-name">app.js</span><button type="button" class="copy-btn" data-what="app.js"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-copy"/></svg><span class="copy-label">Copy</span><span class="sr-only"> app.js</span></button></div><pre><code id="ag4-code-vanilla-code">const plan = yuktai.planTasks("show salary over 1 lakh, then sort by joined, then summarize")
+const result = await yuktai.runTasks(
+  "show salary over 1 lakh, then sort by joined, then summarize",
+  { data: rows, columns: yuktai.toGridToolColumns(columns), rowKey: "id" }
+)</code></pre></div></div></div>
+<h2 id="questions">Questions it understands</h2>
+<ul>
+<li><strong>Filters:</strong> “salary over 1 lakh”, “under 50k”, “Engineering in Hyderabad”, “name starts with R”, “joined this year”. Amounts like 10k, 1.5 lakh, 2 cr and ₹10,000 are understood.</li>
+<li><strong>Sorting and top N:</strong> “highest salary first”, “top 3 by salary”, “sort by joined”.</li>
+<li><strong>Summaries and BI:</strong> “average salary by department”, “total salary by city”, “trend of salary by year”, “anything unusual?”.</li>
+<li><strong>Grid tools:</strong> “how many”, “open Ravi”, “clear filters”, “clear sort”.</li>
+<li><strong>Other languages:</strong> add <code>customRules</code> with phrases in Telugu, Hindi or any language.</li>
+</ul>
+  </main>
+</div>
+<footer class="footer">
+  <div class="footer-in">
+    <span>© <span id="year">2026</span> YuktAI · Yuktishaalaa AI Lab · GPL-3.0</span>
+    <span><a href="https://www.npmjs.com/package/@yuktishaalaa/yuktai" target="_blank" rel="noopener noreferrer">npm<span class="sr-only"> (opens in a new tab)</span></a> · <a href="https://github.com/sandeepmiriyala03/yuktai" target="_blank" rel="noopener noreferrer">GitHub<span class="sr-only"> (opens in a new tab)</span></a> · <a href="https://aksharatantra.miriyala.in" target="_blank" rel="noopener noreferrer">Aksharatantra<span class="sr-only"> (opens in a new tab)</span></a></span>
+  </div>
+</footer>
+<div class="net" id="net" role="status" aria-live="polite" hidden></div>
+<button type="button" class="to-top" id="to-top" aria-label="Back to top" hidden>
+  <svg class="ring" viewBox="0 0 56 56" aria-hidden="true" focusable="false"><circle class="bar" id="to-top-bar" cx="28" cy="28" r="26"/></svg>
+  <svg class="i arrow" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-arrowUp"/></svg>
+</button>
+<script src="assets/js/config.js" defer></script>
+<script src="assets/js/site.js" defer></script>
+<script src="assets/js/data.js" defer></script><script src="assets/js/pages/agents.js" defer></script>
+</body>
+</html>

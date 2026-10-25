@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#0a0f1c" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#f6f8fb" media="(prefers-color-scheme: light)">
+<meta name="description" content="YuktAI Rust/WebAssembly engines for grid search and page RAG: benchmark against TypeScript on your own data size.">
+<title>Rust engines · YuktaiDocs</title>
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icons/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="icons/icon-192.png" sizes="192x192" type="image/png">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="YuktaiDocs">
+<link rel="stylesheet" href="assets/css/site.css">
+<script src="assets/js/theme.js"></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="topbar">
+  <div class="topbar-in">
+    <a class="brand" href="./"><span class="brandmark"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-namaskar"/></svg></span><span>YuktaiDocs</span></a>
+    <span class="ver-chip" title="YuktAI version used on this site">v<span class="ver-text">5.3.9</span></span>
+    <div class="tools">
+      <button type="button" class="install-btn" id="install-btn" hidden><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-install"/></svg><span>Install app</span></button>
+      <span class="icon-btn net-chip" id="net-chip" role="img" aria-label="Network status"></span>
+      <button type="button" class="icon-btn" id="theme-btn" aria-pressed="false"><span id="theme-icon"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-moon"/></svg></span><span class="sr-only">Dark theme</span></button>
+    </div>
+  </div>
+</header>
+<div class="banner" id="docs-banner" role="status" hidden></div>
+<div class="layout">
+  <nav class="sidenav" aria-label="Documentation">
+    <h2>YuktAI docs</h2>
+    <button type="button" class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-list"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-menu"/></svg><span>Menu · Rust engines</span><svg class="i chev" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-arrowDown"/></svg></button>
+    <ul id="nav-list"><li><a href="./"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-home"/></svg>Home</a></li><li><a href="accessibility.html"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-accessibility"/></svg>Accessibility</a></li><li><a href="grid.html"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-grid"/></svg>Data grid</a></li><li><a href="agents.html"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-robot"/></svg>Grid agents</a></li><li><a href="ask.html"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-chat"/></svg>Ask page (RAG)</a></li><li><a href="page-tools.html"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-tools"/></svg>Page tools</a></li><li><a href="nextjs.html"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-code"/></svg>Next.js setup</a></li><li><a href="icons.html"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-star"/></svg>Icon studio</a></li><li><a href="playground.html"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-dataObject"/></svg>Function playground</a></li><li><a href="rust.html" aria-current="page"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-speed"/></svg>Rust engines</a></li></ul>
+    <p class="side-note">Every demo runs YuktAI <span class="ver-text">5.3.9</span> in your browser. No API keys, no server.</p>
+  </nav>
+  <main id="main" tabindex="-1">
+    <div class="page-head">
+      <p class="kicker"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-speed"/></svg>Rust engines</p>
+      <h1>Rust engines</h1><p class="lead">YuktAI has two optional engines written in Rust and compiled to WebAssembly: grid search and number/date sorting, and the page RAG search. They return exactly the same results as TypeScript, only faster on big data. Time them here on your own sizes.</p></div>
+<ul class="status-list" id="rs-support" aria-live="polite"><li><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-info"/></svg>Checking WebAssembly…</li></ul>
+<h2 id="grid">1. Grid: TypeScript vs Rust</h2>
+<div class="demo"><p class="demo-label"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-play"/></svg>Benchmark</p>
+  <form class="controls" id="rs-form">
+    <div class="field"><label for="rs-rows">Rows</label><input id="rs-rows" type="number" inputmode="numeric" min="1000" max="300000" step="1000" value="50000"><p class="hint">1,000 to 300,000</p></div>
+    <div class="field"><label for="rs-q">Search for</label><input id="rs-q" value="hyderabad" autocomplete="off"></div>
+    <div class="field" style="justify-content:flex-end"><button type="submit" class="btn primary"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-speed"/></svg>Run benchmark</button></div>
+  </form>
+  <div id="rs-result" aria-live="polite"><p class="hint">Runs each engine 5 times and shows the middle time.</p></div>
+  <div class="grid2" style="margin-top:12px"><div><h3 style="margin-top:0">TypeScript</h3><div id="rs-ts"></div></div><div><h3 style="margin-top:0">Rust</h3><div id="rs-rs"></div></div></div></div><div class="codetabs" data-codetabs><div class="tablist" role="tablist" aria-label="Code"><button type="button" role="tab" id="rs-code-next-tab" data-fw="next" aria-controls="rs-code-next" aria-selected="true" tabindex="0"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-code"/></svg>Next.js / React</button><button type="button" role="tab" id="rs-code-vanilla-tab" data-fw="vanilla" aria-controls="rs-code-vanilla" aria-selected="false" tabindex="-1"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-file"/></svg>Vanilla JS</button></div><div role="tabpanel" id="rs-code-next" aria-labelledby="rs-code-next-tab"><div class="codefile"><div class="codehead"><span class="file" id="rs-code-next-code-name">app/staff/page.tsx</span><button type="button" class="copy-btn" data-what="app/staff/page.tsx"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-copy"/></svg><span class="copy-label">Copy</span><span class="sr-only"> app/staff/page.tsx</span></button></div><pre><code id="rs-code-next-code">"use client"
+import { YuktaiGrid } from "@yuktishaalaa/yuktai"
+
+&lt;YuktaiGrid
+  data={rows}
+  columns={columns}
+  rowKey="id"
+  engine="auto"          // "ts" | "rust" | "auto" (Rust from 10,000 rows)
+  showSearchTime         // "· 0.9 ms · Rust" next to the row count
+  onSearchTime={(t) =&gt; console.log(t.ms, t.engine)}
+/&gt;</code></pre></div></div><div role="tabpanel" id="rs-code-vanilla" aria-labelledby="rs-code-vanilla-tab" hidden><div class="codefile"><div class="codehead"><span class="file" id="rs-code-vanilla-code-name">app.js</span><button type="button" class="copy-btn" data-what="app.js"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-copy"/></svg><span class="copy-label">Copy</span><span class="sr-only"> app.js</span></button></div><pre><code id="rs-code-vanilla-code">const grid = yuktai.renderGrid("#staff", {
+  data: rows, columns, rowKey: "id",
+  engine: "auto",
+  showSearchTime: true,
+  onSearchTime: (t) =&gt; console.log(t.query, t.ms, t.rows, t.engine)
+})
+await grid.whenEngineReady()   // "rust" once WebAssembly is ready, otherwise "ts"</code></pre></div></div></div>
+<h2 id="rag">2. Page RAG: TypeScript vs Rust</h2>
+<div class="demo"><p class="demo-label"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-play"/></svg>Benchmark</p>
+  <form class="controls" id="rr-form">
+    <div class="field"><label for="rr-n">Passages</label><input id="rr-n" type="number" inputmode="numeric" min="100" max="100000" step="100" value="10000"><p class="hint">100 to 100,000 (one per staff row)</p></div>
+    <div class="field"><label for="rr-q">Question</label><input id="rr-q" value="security engineer in chennai" autocomplete="off"></div>
+    <div class="field" style="justify-content:flex-end"><button type="submit" class="btn primary"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-speed"/></svg>Run benchmark</button></div>
+  </form>
+  <div id="rr-result" aria-live="polite"><p class="hint">Each engine searches 20 times; the top 5 passages are compared.</p></div></div><div class="codetabs" data-codetabs><div class="tablist" role="tablist" aria-label="Code"><button type="button" role="tab" id="rr-code-next-tab" data-fw="next" aria-controls="rr-code-next" aria-selected="true" tabindex="0"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-code"/></svg>Next.js / React</button><button type="button" role="tab" id="rr-code-vanilla-tab" data-fw="vanilla" aria-controls="rr-code-vanilla" aria-selected="false" tabindex="-1"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-file"/></svg>Vanilla JS</button></div><div role="tabpanel" id="rr-code-next" aria-labelledby="rr-code-next-tab"><div class="codefile"><div class="codehead"><span class="file" id="rr-code-next-code-name">lib/search.ts</span><button type="button" class="copy-btn" data-what="lib/search.ts"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-copy"/></svg><span class="copy-label">Copy</span><span class="sr-only"> lib/search.ts</span></button></div><pre><code id="rr-code-next-code">import { createContextIndex } from "@yuktishaalaa/yuktai"
+
+const index = createContextIndex({ rows, columns, rowKey: "id", includePage: false, engine: "rust" })
+const hits = index.search("security engineer in chennai", 5)</code></pre></div></div><div role="tabpanel" id="rr-code-vanilla" aria-labelledby="rr-code-vanilla-tab" hidden><div class="codefile"><div class="codehead"><span class="file" id="rr-code-vanilla-code-name">app.js</span><button type="button" class="copy-btn" data-what="app.js"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-copy"/></svg><span class="copy-label">Copy</span><span class="sr-only"> app.js</span></button></div><pre><code id="rr-code-vanilla-code">const index = yuktai.createContextIndex({ rows, columns, rowKey: "id", includePage: false, engine: "rust" })
+const hits = index.search("security engineer in chennai", 5)</code></pre></div></div></div>
+<h2 id="how">How the engines work</h2>
+<div class="grid2">
+  <div class="card"><h3><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-dataObject"/></svg> Small and self-contained</h3><p>The Rust code is <code>no_std</code>, compiled to WebAssembly and embedded in the YuktAI script as base64. There is no extra file to host, no bundler setting, and it works offline.</p></div>
+  <div class="card"><h3><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-check"/></svg> Same results, proved</h3><p>Rust runs the same rules as TypeScript (Unicode-aware tokens, prefix matching, BM25 with the same idf), and parity tests check that every query returns the same rows and passages in the same order.</p></div>
+  <div class="card"><h3><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-shieldCheck"/></svg> Safe fallback</h3><p>The engine loads only when you set <code>engine</code>. If WebAssembly is missing or blocked, TypeScript runs instead and <code>grid.engine</code> says <code>"ts"</code>.</p></div>
+  <div class="card"><h3><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-lock"/></svg> Content Security Policy</h3><p>Sites with a CSP need <code>'wasm-unsafe-eval'</code> in <code>script-src</code> for the Rust engines. This site's <code>netlify.toml</code> shows a working policy.</p></div>
+</div>
+
+  </main>
+</div>
+<footer class="footer">
+  <div class="footer-in">
+    <span>© <span id="year">2026</span> YuktAI · Yuktishaalaa AI Lab · GPL-3.0</span>
+    <span><a href="https://www.npmjs.com/package/@yuktishaalaa/yuktai" target="_blank" rel="noopener noreferrer">npm<span class="sr-only"> (opens in a new tab)</span></a> · <a href="https://github.com/sandeepmiriyala03/yuktai" target="_blank" rel="noopener noreferrer">GitHub<span class="sr-only"> (opens in a new tab)</span></a> · <a href="https://aksharatantra.miriyala.in" target="_blank" rel="noopener noreferrer">Aksharatantra<span class="sr-only"> (opens in a new tab)</span></a></span>
+  </div>
+</footer>
+<div class="net" id="net" role="status" aria-live="polite" hidden></div>
+<button type="button" class="to-top" id="to-top" aria-label="Back to top" hidden>
+  <svg class="ring" viewBox="0 0 56 56" aria-hidden="true" focusable="false"><circle class="bar" id="to-top-bar" cx="28" cy="28" r="26"/></svg>
+  <svg class="i arrow" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-arrowUp"/></svg>
+</button>
+<script src="assets/js/config.js" defer></script>
+<script src="assets/js/site.js" defer></script>
+<script src="assets/js/data.js" defer></script><script src="assets/js/pages/rust.js" defer></script>
+</body>
+</html>

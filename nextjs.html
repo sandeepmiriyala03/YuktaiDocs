@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#0a0f1c" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#f6f8fb" media="(prefers-color-scheme: light)">
+<meta name="description" content="Generate a YuktAIWrapper setup for Next.js: choose launcher, accessibility, Ask page, agent and Vibe Coder buttons and copy the files.">
+<title>Next.js setup · YuktaiDocs</title>
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icons/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="icons/icon-192.png" sizes="192x192" type="image/png">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="YuktaiDocs">
+<link rel="stylesheet" href="assets/css/site.css">
+<script src="assets/js/theme.js"></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="topbar">
+  <div class="topbar-in">
+    <a class="brand" href="./"><span class="brandmark"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-namaskar"/></svg></span><span>YuktaiDocs</span></a>
+    <span class="ver-chip" title="YuktAI version used on this site">v<span class="ver-text">5.3.9</span></span>
+    <div class="tools">
+      <button type="button" class="install-btn" id="install-btn" hidden><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-install"/></svg><span>Install app</span></button>
+      <span class="icon-btn net-chip" id="net-chip" role="img" aria-label="Network status"></span>
+      <button type="button" class="icon-btn" id="theme-btn" aria-pressed="false"><span id="theme-icon"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-moon"/></svg></span><span class="sr-only">Dark theme</span></button>
+    </div>
+  </div>
+</header>
+<div class="banner" id="docs-banner" role="status" hidden></div>
+<div class="layout">
+  <nav class="sidenav" aria-label="Documentation">
+    <h2>YuktAI docs</h2>
+    <button type="button" class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-list"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-menu"/></svg><span>Menu · Next.js setup</span><svg class="i chev" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-arrowDown"/></svg></button>
+    <ul id="nav-list"><li><a href="./"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-home"/></svg>Home</a></li><li><a href="accessibility.html"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-accessibility"/></svg>Accessibility</a></li><li><a href="grid.html"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-grid"/></svg>Data grid</a></li><li><a href="agents.html"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-robot"/></svg>Grid agents</a></li><li><a href="ask.html"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-chat"/></svg>Ask page (RAG)</a></li><li><a href="page-tools.html"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-tools"/></svg>Page tools</a></li><li><a href="nextjs.html" aria-current="page"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-code"/></svg>Next.js setup</a></li><li><a href="icons.html"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-star"/></svg>Icon studio</a></li><li><a href="playground.html"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-dataObject"/></svg>Function playground</a></li><li><a href="rust.html"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-speed"/></svg>Rust engines</a></li></ul>
+    <p class="side-note">Every demo runs YuktAI <span class="ver-text">5.3.9</span> in your browser. No API keys, no server.</p>
+  </nav>
+  <main id="main" tabindex="-1">
+    <div class="page-head">
+      <p class="kicker"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-code"/></svg>Next.js setup</p>
+      <h1>Next.js setup</h1><p class="lead">Add YuktAI to a Next.js App Router project with one client component. Choose the floating buttons your users need; the files below are generated for exactly that choice.</p></div><div class="demo"><p class="demo-label"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-play"/></svg>Builder</p>
+  <div class="grid2">
+    <div>
+      <fieldset class="field" style="margin-bottom:10px"><legend>Buttons</legend>
+        <label class="check"><input type="checkbox" id="nx-launcher" checked> ✨ Launcher</label><p class="hint" style="margin:-6px 0 6px 32px">One button that shows or hides the others; remembers the choice; Esc closes.</p>
+        <label class="check"><input type="checkbox" id="nx-a11y" checked> ♿ Accessibility</label><p class="hint" style="margin:-6px 0 6px 32px">Contrast, text size, dyslexia font, colour-blind filters…</p>
+        <label class="check"><input type="checkbox" id="nx-rag" checked> 💬 Ask page</label><p class="hint" style="margin:-6px 0 6px 32px">Questions about the page (RAG), answered on the device.</p>
+        <label class="check"><input type="checkbox" id="nx-agent"> 🤖 Agent</label><p class="hint" style="margin:-6px 0 6px 32px">Page agent for multi-step tasks.</p>
+        <label class="check"><input type="checkbox" id="nx-vibe"> ⚡ Vibe Coder</label><p class="hint" style="margin:-6px 0 6px 32px">Developer tool: generate UI code. Usually off in production.</p>
+      </fieldset>
+      <div class="controls" style="grid-template-columns:repeat(auto-fill,minmax(170px,1fr))">
+        <div class="field"><label for="nx-pos">Position</label><select id="nx-pos"><option value="left">Left</option><option value="right">Right</option></select></div>
+        <div class="field"><label for="nx-engine">Ask page engine</label><select id="nx-engine"><option value="">Not set (model only)</option><option value="ts">TypeScript</option><option value="rust" selected>Rust</option><option value="auto">Auto</option></select></div>
+        <div class="field"><label for="nx-src">Folder</label><select id="nx-src"><option value="app">app/</option><option value="src/app">src/app/</option></select></div>
+      </div>
+      <fieldset class="field"><legend>Engine options</legend>
+        <label class="check"><input type="checkbox" id="nx-autofix"> Auto-fix on load</label>
+      </fieldset>
+    </div>
+    <div>
+      <p class="lbl muted" style="margin:0 0 8px;font-weight:800">Your visitors will see</p>
+      <div class="card" id="nx-preview" style="min-height:240px;position:relative;background:var(--d-panel2)"></div>
+      <p class="hint" id="nx-mode"></p>
+    </div>
+  </div></div><div class="codetabs" data-codetabs><div class="tablist" role="tablist" aria-label="Code"><button type="button" role="tab" id="nx-code-next-tab" data-fw="next" aria-controls="nx-code-next" aria-selected="true" tabindex="0"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-code"/></svg>Next.js / React</button><button type="button" role="tab" id="nx-code-vanilla-tab" data-fw="vanilla" aria-controls="nx-code-vanilla" aria-selected="false" tabindex="-1"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-file"/></svg>Vanilla JS</button></div><div role="tabpanel" id="nx-code-next" aria-labelledby="nx-code-next-tab"><div class="codefile"><div class="codehead"><span class="file" id="nx-code-next-code-name">app/YuktaiClient.tsx</span><button type="button" class="copy-btn" data-what="app/YuktaiClient.tsx"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-copy"/></svg><span class="copy-label">Copy</span><span class="sr-only"> app/YuktaiClient.tsx</span></button></div><pre><code id="nx-code-next-code">// generated</code></pre></div><div class="codefile"><div class="codehead"><span class="file" id="nx-code-next-code-1-name">app/layout.tsx</span><button type="button" class="copy-btn" data-what="app/layout.tsx"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-copy"/></svg><span class="copy-label">Copy</span><span class="sr-only"> app/layout.tsx</span></button></div><pre><code id="nx-code-next-code-1">// generated</code></pre></div></div><div role="tabpanel" id="nx-code-vanilla" aria-labelledby="nx-code-vanilla-tab" hidden><div class="codefile"><div class="codehead"><span class="file" id="nx-code-vanilla-code-name">index.html</span><button type="button" class="copy-btn" data-what="index.html"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-copy"/></svg><span class="copy-label">Copy</span><span class="sr-only"> index.html</span></button></div><pre><code id="nx-code-vanilla-code">&lt;!-- generated --&gt;</code></pre></div></div></div>
+<h2 id="steps">Steps</h2>
+<ol class="steps">
+<li>Install: <code>npm install @yuktishaalaa/yuktai@5.3.9</code></li>
+<li>Create <code>YuktaiClient.tsx</code> next to your root layout and paste the first file. It must start with <code>"use client"</code>: YuktAI uses browser APIs, and the package itself does not mark its components as client components.</li>
+<li>In <code>layout.tsx</code>, wrap <code>{children}</code> with <code>&lt;YuktaiClient&gt;</code>. Keep <code>metadata</code> and fonts in the layout as they are.</li>
+<li>Run <code>npm run dev</code>. The buttons appear at the side you chose.</li>
+</ol>
+
+<h2 id="components">Using other YuktAI components</h2>
+<div class="codetabs" data-codetabs><div class="tablist" role="tablist" aria-label="Code"><button type="button" role="tab" id="nx-comp-next-tab" data-fw="next" aria-controls="nx-comp-next" aria-selected="true" tabindex="0"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-code"/></svg>Next.js / React</button><button type="button" role="tab" id="nx-comp-vanilla-tab" data-fw="vanilla" aria-controls="nx-comp-vanilla" aria-selected="false" tabindex="-1"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-file"/></svg>Vanilla JS</button></div><div role="tabpanel" id="nx-comp-next" aria-labelledby="nx-comp-next-tab"><div class="codefile"><div class="codehead"><span class="file" id="nx-comp-next-code-name">app/staff/page.tsx</span><button type="button" class="copy-btn" data-what="app/staff/page.tsx"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-copy"/></svg><span class="copy-label">Copy</span><span class="sr-only"> app/staff/page.tsx</span></button></div><pre><code id="nx-comp-next-code">"use client"
+import { YuktaiGrid, AgenticPanel } from "@yuktishaalaa/yuktai"
+import { SearchIcon } from "@yuktishaalaa/yuktai/icons"
+
+export default function Staff() {
+  return (
+    &lt;main&gt;
+      &lt;h1&gt;&lt;SearchIcon size={28} color="#0a4a85" /&gt; Staff&lt;/h1&gt;
+      &lt;YuktaiGrid data={rows} columns={columns} rowKey="id" engine="auto" showSearchTime /&gt;
+      &lt;AgenticPanel defaultTab="ask" engine="rust" /&gt;
+    &lt;/main&gt;
+  )
+}</code></pre></div></div><div role="tabpanel" id="nx-comp-vanilla" aria-labelledby="nx-comp-vanilla-tab" hidden><div class="codefile"><div class="codehead"><span class="file" id="nx-comp-vanilla-code-name">pages/_app.tsx (Pages Router)</span><button type="button" class="copy-btn" data-what="pages/_app.tsx (Pages Router)"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-copy"/></svg><span class="copy-label">Copy</span><span class="sr-only"> pages/_app.tsx (Pages Router)</span></button></div><pre><code id="nx-comp-vanilla-code">import type { AppProps } from "next/app"
+import { YuktAIWrapper } from "@yuktishaalaa/yuktai"
+
+// Pages Router: everything in pages/ already runs on the client.
+export default function App({ Component, pageProps }: AppProps) {
+  return (
+    &lt;YuktAIWrapper position="left" launcher showAccessibility showRag engine="rust"&gt;
+      &lt;Component {...pageProps} /&gt;
+    &lt;/YuktAIWrapper&gt;
+  )
+}</code></pre></div></div></div>
+<p class="hint">The second tab here shows the Pages Router version instead of plain HTML.</p>
+
+<h2 id="trouble">Common problems</h2>
+<table class="ref"><caption>Symptom, cause and fix</caption><thead><tr><th scope="col">Symptom</th><th scope="col">Fix</th></tr></thead><tbody>
+<tr><td>Error about hooks or <code>window</code> in a Server Component</td><td>Use YuktAI only inside a file that starts with <code>"use client"</code> (like <code>YuktaiClient.tsx</code>), not directly in <code>layout.tsx</code>.</td></tr>
+<tr><td>Type error: <code>children</code> is missing</td><td><code>YuktAIWrapper</code> must wrap your content: <code>&lt;YuktAIWrapper&gt;{children}&lt;/YuktAIWrapper&gt;</code>, not self-closing.</td></tr>
+<tr><td>Page content shows twice</td><td>Render <code>{children}</code> once, inside the wrapper only.</td></tr>
+<tr><td>New props (<code>launcher</code>, <code>showVibeCoder</code>, <code>engine</code>) show type errors</td><td>Delete old hand-written <code>declare module "@yuktishaalaa/yuktai"</code> files (for example <code>src/types/*.d.ts</code>); the package ships its own types.</td></tr>
+<tr><td>Old version still running</td><td><code>npm ls @yuktishaalaa/yuktai</code>, then <code>npm install @yuktishaalaa/yuktai@latest</code> and restart <code>npm run dev</code>.</td></tr>
+<tr><td>Rust engine reported as "ts"</td><td>The browser blocked WebAssembly (often a Content Security Policy). Allow <code>'wasm-unsafe-eval'</code> in <code>script-src</code>; YuktAI falls back to TypeScript meanwhile, with the same results.</td></tr>
+</tbody></table>
+<table class="ref"><caption>YuktAIWrapper props</caption><thead><tr><th scope="col">Prop</th><th scope="col">What it does</th></tr></thead><tbody><tr><td>children</td><td>Your app (required)</td></tr><tr><td>position</td><td>"left" (default) or "right"</td></tr><tr><td>launcher</td><td>One ✨ button that shows or hides the others</td></tr><tr><td>showAccessibility, showRag, showAgent, showVibeCoder</td><td>Turn each button on. Setting showAccessibility, showVibeCoder or launcher switches every button to opt-in</td></tr><tr><td>engine</td><td>"ts", "rust" or "auto": Ask page finds passages with the page RAG first, then the on-device model answers from them</td></tr><tr><td>config</td><td>Engine options, for example { autoFix: false }</td></tr></tbody></table><p class="hint">Older usage still works: with none of <code>showAccessibility</code>, <code>showVibeCoder</code> or <code>launcher</code> set, ♿ is always shown and ⚡ follows <code>showAgent</code>.</p>
+  </main>
+</div>
+<footer class="footer">
+  <div class="footer-in">
+    <span>© <span id="year">2026</span> YuktAI · Yuktishaalaa AI Lab · GPL-3.0</span>
+    <span><a href="https://www.npmjs.com/package/@yuktishaalaa/yuktai" target="_blank" rel="noopener noreferrer">npm<span class="sr-only"> (opens in a new tab)</span></a> · <a href="https://github.com/sandeepmiriyala03/yuktai" target="_blank" rel="noopener noreferrer">GitHub<span class="sr-only"> (opens in a new tab)</span></a> · <a href="https://aksharatantra.miriyala.in" target="_blank" rel="noopener noreferrer">Aksharatantra<span class="sr-only"> (opens in a new tab)</span></a></span>
+  </div>
+</footer>
+<div class="net" id="net" role="status" aria-live="polite" hidden></div>
+<button type="button" class="to-top" id="to-top" aria-label="Back to top" hidden>
+  <svg class="ring" viewBox="0 0 56 56" aria-hidden="true" focusable="false"><circle class="bar" id="to-top-bar" cx="28" cy="28" r="26"/></svg>
+  <svg class="i arrow" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-arrowUp"/></svg>
+</button>
+<script src="assets/js/config.js" defer></script>
+<script src="assets/js/site.js" defer></script>
+<script src="assets/js/pages/nextjs.js" defer></script>
+</body>
+</html>

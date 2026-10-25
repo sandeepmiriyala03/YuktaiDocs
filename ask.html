@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#0a0f1c" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#f6f8fb" media="(prefers-color-scheme: light)">
+<meta name="description" content="YuktAI page and data RAG: try BM25 retrieval in TypeScript or Rust on your own text, add an on-device model, and copy the code.">
+<title>Ask page (RAG) · YuktaiDocs</title>
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icons/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="icons/icon-192.png" sizes="192x192" type="image/png">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="YuktaiDocs">
+<link rel="stylesheet" href="assets/css/site.css">
+<script src="assets/js/theme.js"></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="topbar">
+  <div class="topbar-in">
+    <a class="brand" href="./"><span class="brandmark"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-namaskar"/></svg></span><span>YuktaiDocs</span></a>
+    <span class="ver-chip" title="YuktAI version used on this site">v<span class="ver-text">5.3.9</span></span>
+    <div class="tools">
+      <button type="button" class="install-btn" id="install-btn" hidden><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-install"/></svg><span>Install app</span></button>
+      <span class="icon-btn net-chip" id="net-chip" role="img" aria-label="Network status"></span>
+      <button type="button" class="icon-btn" id="theme-btn" aria-pressed="false"><span id="theme-icon"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-moon"/></svg></span><span class="sr-only">Dark theme</span></button>
+    </div>
+  </div>
+</header>
+<div class="banner" id="docs-banner" role="status" hidden></div>
+<div class="layout">
+  <nav class="sidenav" aria-label="Documentation">
+    <h2>YuktAI docs</h2>
+    <button type="button" class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-list"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-menu"/></svg><span>Menu · Ask page (RAG)</span><svg class="i chev" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-arrowDown"/></svg></button>
+    <ul id="nav-list"><li><a href="./"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-home"/></svg>Home</a></li><li><a href="accessibility.html"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-accessibility"/></svg>Accessibility</a></li><li><a href="grid.html"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-grid"/></svg>Data grid</a></li><li><a href="agents.html"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-robot"/></svg>Grid agents</a></li><li><a href="ask.html" aria-current="page"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-chat"/></svg>Ask page (RAG)</a></li><li><a href="page-tools.html"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-tools"/></svg>Page tools</a></li><li><a href="nextjs.html"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-code"/></svg>Next.js setup</a></li><li><a href="icons.html"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-star"/></svg>Icon studio</a></li><li><a href="playground.html"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-dataObject"/></svg>Function playground</a></li><li><a href="rust.html"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-speed"/></svg>Rust engines</a></li></ul>
+    <p class="side-note">Every demo runs YuktAI <span class="ver-text">5.3.9</span> in your browser. No API keys, no server.</p>
+  </nav>
+  <main id="main" tabindex="-1">
+    <div class="page-head">
+      <p class="kicker"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-chat"/></svg>Ask page (RAG)</p>
+      <h1>Ask page (RAG)</h1><p class="lead">Answer questions from your own text, your page and your grid data. YuktAI finds the best passages and quotes them; an optional on-device model can then write the answer from only those passages.</p></div>
+<div class="callout"><p><strong>What it is, honestly:</strong> BM25 keyword retrieval with prefix matching for word endings and Telugu-aware tokens, in TypeScript or Rust. It is not vector (embedding) search: it finds passages that share words with the question, so an English question will not match Telugu-only text.</p></div>
+<h2 id="try" style="margin-top:20px">Try it with your own text</h2>
+<p>Paste your FAQ, policy or help text. Each paragraph (separated by a blank line) is one passage.</p>
+<div class="demo"><p class="demo-label"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-play"/></svg>Live demo</p>
+  <div class="field" style="margin-bottom:12px"><label for="rag-docs">Your documents</label><textarea id="rag-docs" rows="9">Leave policy: every employee gets 24 days of paid leave a year. Up to 8 unused days carry over to the next year.
+
+Work from home: staff may work from home two days a week. Teams in Support agree their days with the team lead.
+
+Salary is paid on the last working day of each month. Payslips are in the HR portal under My pay.
+
+The Hyderabad office is open from 9 am to 7 pm, Monday to Friday. Visitors sign in at the front desk.
+
+Accessibility support: ask the Accessibility team for screen readers, large monitors or captioning. Requests are answered within two working days.
+
+సెలవు విధానం: ప్రతి ఉద్యోగికి సంవత్సరానికి 24 రోజుల జీతంతో కూడిన సెలవు ఉంటుంది.</textarea></div>
+  <div class="controls">
+    <div class="field"><label for="rag-engine">Engine</label><select id="rag-engine"><option value="ts">TypeScript</option><option value="rust" selected>Rust (WebAssembly)</option><option value="auto">Auto (Rust from 1,000 passages)</option></select></div>
+    <div class="field"><label for="rag-k">Passages to use</label><select id="rag-k"><option>1</option><option>2</option><option>3</option><option selected>4</option><option>6</option></select></div>
+    <fieldset class="field"><legend>Also search</legend><label class="check"><input type="checkbox" id="rag-page"> The text of this page</label></fieldset>
+  </div>
+  <form class="controls" id="rag-form" style="grid-template-columns:minmax(0,1fr) auto;align-items:end">
+    <div class="field"><label for="rag-q">Question</label><input id="rag-q" value="How many leave days do I get?" autocomplete="off"></div>
+    <button type="submit" class="btn primary"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-search"/></svg>Ask</button>
+  </form>
+  <div class="btn-row" id="rag-examples"></div>
+  <div id="rag-answer" aria-live="polite"><p class="loading-note" data-needs-yuktai>Loading…</p></div>
+  <div class="btn-row"><button type="button" class="btn" id="rag-compare"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-speed"/></svg>Compare TypeScript and Rust</button></div>
+  <pre class="out" id="rag-compare-out" aria-live="polite"></pre></div><div class="codetabs" data-codetabs><div class="tablist" role="tablist" aria-label="Code"><button type="button" role="tab" id="rag-code-next-tab" data-fw="next" aria-controls="rag-code-next" aria-selected="true" tabindex="0"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-code"/></svg>Next.js / React</button><button type="button" role="tab" id="rag-code-vanilla-tab" data-fw="vanilla" aria-controls="rag-code-vanilla" aria-selected="false" tabindex="-1"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-file"/></svg>Vanilla JS</button></div><div role="tabpanel" id="rag-code-next" aria-labelledby="rag-code-next-tab"><div class="codefile"><div class="codehead"><span class="file" id="rag-code-next-code-name">app/help/AskHelp.tsx</span><button type="button" class="copy-btn" data-what="app/help/AskHelp.tsx"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-copy"/></svg><span class="copy-label">Copy</span><span class="sr-only"> app/help/AskHelp.tsx</span></button></div><pre><code id="rag-code-next-code">"use client"
+import { useMemo, useState } from "react"
+import { createContextIndex } from "@yuktishaalaa/yuktai"
+
+const documents = [
+  { id: "leave", text: "Leave policy: every employee gets 24 days of paid leave a year." },
+  { id: "wfh", text: "Work from home: staff may work from home two days a week." },
+]
+
+export function AskHelp() {
+  // includePage: true also indexes the visible page text
+  const index = useMemo(() =&gt; createContextIndex({ documents, includePage: false, engine: "rust" }), [])
+  const [answer, setAnswer] = useState("")
+  async function onAsk(question: string) {
+    const r = await index.ask(question, { k: 4 })   // { answer, hits: [{ id, text, score }], generated }
+    setAnswer(r.answer)
+  }
+  return (/* your input + &lt;p aria-live="polite"&gt;{answer}&lt;/p&gt; */ null)
+}</code></pre></div></div><div role="tabpanel" id="rag-code-vanilla" aria-labelledby="rag-code-vanilla-tab" hidden><div class="codefile"><div class="codehead"><span class="file" id="rag-code-vanilla-code-name">help.html</span><button type="button" class="copy-btn" data-what="help.html"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-copy"/></svg><span class="copy-label">Copy</span><span class="sr-only"> help.html</span></button></div><pre><code id="rag-code-vanilla-code">&lt;script&gt;
+  const index = yuktai.createContextIndex({
+    documents: [
+      { id: "leave", text: "Leave policy: every employee gets 24 days of paid leave a year." },
+      { id: "wfh", text: "Work from home: staff may work from home two days a week." }
+    ],
+    includePage: false,      // true: also index the visible page text
+    // rows, columns, rowKey: also index grid data
+    engine: "rust"           // "ts" | "rust" | "auto"
+  })
+
+  const r = await index.ask("How many leave days do I get?", { k: 4 })
+  r.answer   // quoted from the best passages, nothing invented
+  r.hits     // [{ id, source, text, score }]
+  index.search("leave days", 3)   // ranked passages only
+&lt;/script&gt;</code></pre></div></div></div>
+<h2 id="model">Let a model write the answer (optional)</h2>
+<p>Pass <code>generate</code> to <code>ask</code>. YuktAI sends the model only the question and the top passages, so the answer stays grounded. Chrome's built-in Gemini Nano runs on the device; any API works too.</p>
+<div class="codetabs" data-codetabs><div class="tablist" role="tablist" aria-label="Code"><button type="button" role="tab" id="gen-code-next-tab" data-fw="next" aria-controls="gen-code-next" aria-selected="true" tabindex="0"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-code"/></svg>Next.js / React</button><button type="button" role="tab" id="gen-code-vanilla-tab" data-fw="vanilla" aria-controls="gen-code-vanilla" aria-selected="false" tabindex="-1"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-file"/></svg>Vanilla JS</button></div><div role="tabpanel" id="gen-code-next" aria-labelledby="gen-code-next-tab"><div class="codefile"><div class="codehead"><span class="file" id="gen-code-next-code-name">lib/generate.ts</span><button type="button" class="copy-btn" data-what="lib/generate.ts"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-copy"/></svg><span class="copy-label">Copy</span><span class="sr-only"> lib/generate.ts</span></button></div><pre><code id="gen-code-next-code">// Chrome built-in AI (Gemini Nano). Falls back to the quoted answer when it is not available.
+export async function generate(question: string, context: string) {
+  const LM = (globalThis as any).LanguageModel
+  if (!LM) throw new Error("No on-device model")
+  const session = await LM.create()
+  return session.prompt(
+    "Answer only from these passages. If they do not answer it, say so.\n\n" + context + "\n\nQuestion: " + question
+  )
+}
+
+// const r = await index.ask(question, { generate })   → r.generated === true</code></pre></div></div><div role="tabpanel" id="gen-code-vanilla" aria-labelledby="gen-code-vanilla-tab" hidden><div class="codefile"><div class="codehead"><span class="file" id="gen-code-vanilla-code-name">app.js</span><button type="button" class="copy-btn" data-what="app.js"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-copy"/></svg><span class="copy-label">Copy</span><span class="sr-only"> app.js</span></button></div><pre><code id="gen-code-vanilla-code">async function generate(question, context) {
+  if (!window.LanguageModel) throw new Error("No on-device model")
+  const session = await LanguageModel.create()
+  return session.prompt("Answer only from these passages.\n\n" + context + "\n\nQuestion: " + question)
+}
+const r = await index.ask("How many leave days do I get?", { generate })
+
+// The 🛠 page tools use the same hook:
+window.YUKTAI_CONFIG = { showPageTools: true, generate }</code></pre></div></div></div>
+<h2 id="page">Questions about the page itself</h2>
+<p><code>askAboutPage</code> knows the page structure: headings, landmarks, links, form fields and their problems.</p>
+<div class="demo"><p class="demo-label"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-play"/></svg>Live demo</p>
+  <div class="btn-row" id="pg-buttons"></div>
+  <pre class="out" id="pg-out" aria-live="polite"></pre></div><div class="codetabs" data-codetabs><div class="tablist" role="tablist" aria-label="Code"><button type="button" role="tab" id="pg-code-next-tab" data-fw="next" aria-controls="pg-code-next" aria-selected="true" tabindex="0"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-code"/></svg>Next.js / React</button><button type="button" role="tab" id="pg-code-vanilla-tab" data-fw="vanilla" aria-controls="pg-code-vanilla" aria-selected="false" tabindex="-1"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-file"/></svg>Vanilla JS</button></div><div role="tabpanel" id="pg-code-next" aria-labelledby="pg-code-next-tab"><div class="codefile"><div class="codehead"><span class="file" id="pg-code-next-code-name">app/PageHelp.tsx</span><button type="button" class="copy-btn" data-what="app/PageHelp.tsx"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-copy"/></svg><span class="copy-label">Copy</span><span class="sr-only"> app/PageHelp.tsx</span></button></div><pre><code id="pg-code-next-code">"use client"
+import { askAboutPage, analyzePage } from "@yuktishaalaa/yuktai"
+
+const r = await askAboutPage("Which fields are missing labels?")
+// { intent, answer, targets, suggestions }
+const outline = analyzePage()   // title, language, headings, landmarks, counts …</code></pre></div></div><div role="tabpanel" id="pg-code-vanilla" aria-labelledby="pg-code-vanilla-tab" hidden><div class="codefile"><div class="codehead"><span class="file" id="pg-code-vanilla-code-name">app.js</span><button type="button" class="copy-btn" data-what="app.js"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-copy"/></svg><span class="copy-label">Copy</span><span class="sr-only"> app.js</span></button></div><pre><code id="pg-code-vanilla-code">const r = await yuktai.askAboutPage("Which fields are missing labels?")
+const outline = yuktai.analyzePage()</code></pre></div></div></div>
+<h2 id="panel">The Ask page panel</h2>
+<p>The same search with a ready-made UI: <code>AgenticPanel</code> in React, <code>mountAgenticPanel</code> in plain HTML, or the 💬 button of <code>YuktAIWrapper</code>.</p>
+<div class="demo"><p class="demo-label"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-play"/></svg>Live demo</p><div id="rag-panel" data-needs-yuktai><p class="loading-note">Loading…</p></div></div><div class="codetabs" data-codetabs><div class="tablist" role="tablist" aria-label="Code"><button type="button" role="tab" id="panel-code-next-tab" data-fw="next" aria-controls="panel-code-next" aria-selected="true" tabindex="0"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-code"/></svg>Next.js / React</button><button type="button" role="tab" id="panel-code-vanilla-tab" data-fw="vanilla" aria-controls="panel-code-vanilla" aria-selected="false" tabindex="-1"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-file"/></svg>Vanilla JS</button></div><div role="tabpanel" id="panel-code-next" aria-labelledby="panel-code-next-tab"><div class="codefile"><div class="codehead"><span class="file" id="panel-code-next-code-name">app/help/page.tsx</span><button type="button" class="copy-btn" data-what="app/help/page.tsx"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-copy"/></svg><span class="copy-label">Copy</span><span class="sr-only"> app/help/page.tsx</span></button></div><pre><code id="panel-code-next-code">"use client"
+import { AgenticPanel } from "@yuktishaalaa/yuktai"
+
+export default function Help() {
+  return &lt;AgenticPanel defaultTab="ask" engine="rust" /&gt;
+}
+
+// or site-wide, a floating 💬 button:
+// &lt;YuktAIWrapper showRag engine="rust"&gt;{children}&lt;/YuktAIWrapper&gt;</code></pre></div></div><div role="tabpanel" id="panel-code-vanilla" aria-labelledby="panel-code-vanilla-tab" hidden><div class="codefile"><div class="codehead"><span class="file" id="panel-code-vanilla-code-name">help.html</span><button type="button" class="copy-btn" data-what="help.html"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-copy"/></svg><span class="copy-label">Copy</span><span class="sr-only"> help.html</span></button></div><pre><code id="panel-code-vanilla-code">&lt;div id="ask"&gt;&lt;/div&gt;
+&lt;script&gt;
+  yuktai.mountAgenticPanel("#ask", { defaultTab: "ask", engine: "rust" })
+&lt;/script&gt;</code></pre></div></div></div>
+  </main>
+</div>
+<footer class="footer">
+  <div class="footer-in">
+    <span>© <span id="year">2026</span> YuktAI · Yuktishaalaa AI Lab · GPL-3.0</span>
+    <span><a href="https://www.npmjs.com/package/@yuktishaalaa/yuktai" target="_blank" rel="noopener noreferrer">npm<span class="sr-only"> (opens in a new tab)</span></a> · <a href="https://github.com/sandeepmiriyala03/yuktai" target="_blank" rel="noopener noreferrer">GitHub<span class="sr-only"> (opens in a new tab)</span></a> · <a href="https://aksharatantra.miriyala.in" target="_blank" rel="noopener noreferrer">Aksharatantra<span class="sr-only"> (opens in a new tab)</span></a></span>
+  </div>
+</footer>
+<div class="net" id="net" role="status" aria-live="polite" hidden></div>
+<button type="button" class="to-top" id="to-top" aria-label="Back to top" hidden>
+  <svg class="ring" viewBox="0 0 56 56" aria-hidden="true" focusable="false"><circle class="bar" id="to-top-bar" cx="28" cy="28" r="26"/></svg>
+  <svg class="i arrow" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-arrowUp"/></svg>
+</button>
+<script src="assets/js/config.js" defer></script>
+<script src="assets/js/site.js" defer></script>
+<script src="assets/js/pages/ask.js" defer></script>
+</body>
+</html>

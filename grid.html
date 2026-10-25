@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#0a0f1c" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#f6f8fb" media="(prefers-color-scheme: light)">
+<meta name="description" content="YuktAI data grid playground: choose engine, view, theme, Telugu UI and features, and copy the matching Next.js or vanilla code.">
+<title>Data grid · YuktaiDocs</title>
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icons/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="icons/icon-192.png" sizes="192x192" type="image/png">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="YuktaiDocs">
+<link rel="stylesheet" href="assets/css/site.css">
+<script src="assets/js/theme.js"></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="topbar">
+  <div class="topbar-in">
+    <a class="brand" href="./"><span class="brandmark"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-namaskar"/></svg></span><span>YuktaiDocs</span></a>
+    <span class="ver-chip" title="YuktAI version used on this site">v<span class="ver-text">5.3.9</span></span>
+    <div class="tools">
+      <button type="button" class="install-btn" id="install-btn" hidden><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-install"/></svg><span>Install app</span></button>
+      <span class="icon-btn net-chip" id="net-chip" role="img" aria-label="Network status"></span>
+      <button type="button" class="icon-btn" id="theme-btn" aria-pressed="false"><span id="theme-icon"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-moon"/></svg></span><span class="sr-only">Dark theme</span></button>
+    </div>
+  </div>
+</header>
+<div class="banner" id="docs-banner" role="status" hidden></div>
+<div class="layout">
+  <nav class="sidenav" aria-label="Documentation">
+    <h2>YuktAI docs</h2>
+    <button type="button" class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-list"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-menu"/></svg><span>Menu · Data grid</span><svg class="i chev" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-arrowDown"/></svg></button>
+    <ul id="nav-list"><li><a href="./"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-home"/></svg>Home</a></li><li><a href="accessibility.html"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-accessibility"/></svg>Accessibility</a></li><li><a href="grid.html" aria-current="page"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-grid"/></svg>Data grid</a></li><li><a href="agents.html"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-robot"/></svg>Grid agents</a></li><li><a href="ask.html"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-chat"/></svg>Ask page (RAG)</a></li><li><a href="page-tools.html"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-tools"/></svg>Page tools</a></li><li><a href="nextjs.html"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-code"/></svg>Next.js setup</a></li><li><a href="icons.html"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-star"/></svg>Icon studio</a></li><li><a href="playground.html"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-dataObject"/></svg>Function playground</a></li><li><a href="rust.html"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-speed"/></svg>Rust engines</a></li></ul>
+    <p class="side-note">Every demo runs YuktAI <span class="ver-text">5.3.9</span> in your browser. No API keys, no server.</p>
+  </nav>
+  <main id="main" tabindex="-1">
+    <div class="page-head">
+      <p class="kicker"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-grid"/></svg>Data grid</p>
+      <h1>Data grid</h1><p class="lead"><code>YuktaiGrid</code> (React) and <code>yuktai.renderGrid</code> (plain HTML): search, sort, pages, selection, CSV export, five WCAG themes, Telugu UI, keyboard navigation and an optional Rust engine. Set the options for your project below; the grid and the code change together.</p></div><div class="demo"><p class="demo-label"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-play"/></svg>Playground</p>
+  <h2 style="margin-top:0">Set it up for your data</h2>
+  <div class="controls" id="g-form">
+    <div class="field"><label for="g-data">Data</label><select id="g-data"><option value="staff" selected>Staff (1,000 rows)</option><option value="poems">Telugu poems (27 rows)</option><option value="big">Generated rows (any number)</option></select></div>
+    <div class="field" id="g-rows-field" hidden><label for="g-rows">Number of rows</label><input id="g-rows" type="number" inputmode="numeric" min="10" max="300000" step="1" value="20000"><p class="hint">10 to 300,000</p></div>
+    <div class="field"><label for="g-engine">Engine</label><select id="g-engine"><option value="ts">TypeScript (default)</option><option value="rust">Rust (WebAssembly)</option><option value="auto" selected>Auto (Rust from 10,000 rows)</option></select></div>
+    <div class="field"><label for="g-view">View</label><select id="g-view"><option value="table" selected>Table</option><option value="card">Cards</option><option value="auto">Auto (cards on small screens)</option></select></div>
+    <div class="field"><label for="g-theme">Theme</label><select id="g-theme"><option value="default" selected>Default</option><option value="high-contrast">High contrast</option><option value="dark">Dark</option><option value="color-blind">Colour-blind safe</option><option value="dyslexia">Dyslexia-friendly</option></select></div>
+    <div class="field"><label for="g-locale">Language</label><select id="g-locale"><option value="en-IN" selected>English (India)</option><option value="en-US">English (US)</option><option value="te-IN">Telugu</option></select></div>
+    <div class="field"><label for="g-size">Rows per page</label><select id="g-size"><option value="5">5</option><option value="10" selected>10</option><option value="25">25</option><option value="50">50</option><option value="0">No pages</option></select></div>
+    <fieldset class="field"><legend>Features</legend>
+      <div class="checks-row">
+        <label class="check"><input type="checkbox" id="g-search" checked> Search box</label><label class="check"><input type="checkbox" id="g-time" checked> Show search time</label><label class="check"><input type="checkbox" id="g-select" checked> Row selection</label>
+        <label class="check"><input type="checkbox" id="g-export" checked> CSV export</label><label class="check"><input type="checkbox" id="g-agentic"> Question bar</label><label class="check"><input type="checkbox" id="g-ai"> Assistant (voice)</label>
+      </div>
+    </fieldset>
+  </div>
+  <div id="g-grid" data-needs-yuktai><p class="loading-note">Loading the grid…</p></div>
+  <p class="live-line" id="g-time-line" aria-live="polite"></p></div><h3>Your code</h3><p>Copy this into your project. Replace the sample rows with your own data.</p><div class="codetabs" data-codetabs><div class="tablist" role="tablist" aria-label="Code"><button type="button" role="tab" id="g-code-next-tab" data-fw="next" aria-controls="g-code-next" aria-selected="true" tabindex="0"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-code"/></svg>Next.js / React</button><button type="button" role="tab" id="g-code-vanilla-tab" data-fw="vanilla" aria-controls="g-code-vanilla" aria-selected="false" tabindex="-1"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-file"/></svg>Vanilla JS</button></div><div role="tabpanel" id="g-code-next" aria-labelledby="g-code-next-tab"><div class="codefile"><div class="codehead"><span class="file" id="g-code-next-code-name">app/staff/page.tsx</span><button type="button" class="copy-btn" data-what="app/staff/page.tsx"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-copy"/></svg><span class="copy-label">Copy</span><span class="sr-only"> app/staff/page.tsx</span></button></div><pre><code id="g-code-next-code">// generated</code></pre></div></div><div role="tabpanel" id="g-code-vanilla" aria-labelledby="g-code-vanilla-tab" hidden><div class="codefile"><div class="codehead"><span class="file" id="g-code-vanilla-code-name">staff.html</span><button type="button" class="copy-btn" data-what="staff.html"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-copy"/></svg><span class="copy-label">Copy</span><span class="sr-only"> staff.html</span></button></div><pre><code id="g-code-vanilla-code">&lt;!-- generated --&gt;</code></pre></div></div></div>
+<h2 id="api">Control the grid from code</h2>
+<p>Everything the toolbar does is also a method. Each button runs the call shown on it against the grid above.</p>
+<div class="demo"><p class="demo-label"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-play"/></svg>Grid API</p>
+  <div class="btn-row" id="g-api"></div>
+  <pre class="out" id="g-api-out" aria-live="polite"></pre></div><div class="codetabs" data-codetabs><div class="tablist" role="tablist" aria-label="Code"><button type="button" role="tab" id="g-api-code-next-tab" data-fw="next" aria-controls="g-api-code-next" aria-selected="true" tabindex="0"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-code"/></svg>Next.js / React</button><button type="button" role="tab" id="g-api-code-vanilla-tab" data-fw="vanilla" aria-controls="g-api-code-vanilla" aria-selected="false" tabindex="-1"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-file"/></svg>Vanilla JS</button></div><div role="tabpanel" id="g-api-code-next" aria-labelledby="g-api-code-next-tab"><div class="codefile"><div class="codehead"><span class="file" id="g-api-code-next-code-name">app/staff/StaffGrid.tsx</span><button type="button" class="copy-btn" data-what="app/staff/StaffGrid.tsx"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-copy"/></svg><span class="copy-label">Copy</span><span class="sr-only"> app/staff/StaffGrid.tsx</span></button></div><pre><code id="g-api-code-next-code">"use client"
+import { useGrid } from "@yuktishaalaa/yuktai"
+
+// useGrid gives you the same search / sort / paging state to build your own table.
+export function StaffTable({ rows, columns }) {
+  const grid = useGrid({ data: rows, columns, engine: "auto", pagination: { pageSize: 10 } })
+  return (
+    &lt;&gt;
+      &lt;input value={grid.searchQuery} onChange={(e) =&gt; grid.setSearchQuery(e.target.value)} aria-label="Search staff" /&gt;
+      &lt;button onClick={() =&gt; grid.toggleSort("salary")}&gt;Sort by salary&lt;/button&gt;
+      &lt;p&gt;{grid.filteredCount} of {grid.totalCount} rows · page {grid.page} of {grid.totalPages}&lt;/p&gt;
+      &lt;ul&gt;{grid.displayedData.map((r) =&gt; &lt;li key={r.id}&gt;{r.name}&lt;/li&gt;)}&lt;/ul&gt;
+    &lt;/&gt;
+  )
+}</code></pre></div></div><div role="tabpanel" id="g-api-code-vanilla" aria-labelledby="g-api-code-vanilla-tab" hidden><div class="codefile"><div class="codehead"><span class="file" id="g-api-code-vanilla-code-name">app.js</span><button type="button" class="copy-btn" data-what="app.js"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-copy"/></svg><span class="copy-label">Copy</span><span class="sr-only"> app.js</span></button></div><pre><code id="g-api-code-vanilla-code">const grid = yuktai.renderGrid("#staff", { data: rows, columns, rowKey: "id" })
+
+grid.search("Pune"); grid.sortBy("salary", "desc"); grid.clearSort()
+grid.setFilters([{ key: "salary", operator: "greaterThan", value: 100000 }]); grid.clearFilters()
+grid.highlight(["1001"]); grid.select(["1001", "1002"]); grid.getSelectedRows()
+grid.goToPage(3); grid.nextPage(); grid.setPageSize(50)
+grid.setTheme("high-contrast"); grid.setView("card"); grid.setLoading(true)
+grid.refresh(newRows); grid.exportCSV(); grid.biSummary(); grid.anomalies()
+grid.engine            // "rust" or "ts": the engine in use
+grid.getSearchTime()   // { query, ms, rows, engine } of the last search or sort</code></pre></div></div></div><h2 id="reference">Options</h2><table class="ref"><caption>Grid options (React prop or renderGrid option)</caption><thead><tr><th scope="col">Option</th><th scope="col">What it does</th></tr></thead><tbody><tr><td>data, columns, rowKey</td><td>Rows, columns and the ID field (default "id")</td></tr><tr><td>columns[]</td><td>key, label, type ("text", "number", "date", "boolean", "badge"), align, sortable, render(value, row), hiddenOnMobile, width</td></tr><tr><td>engine</td><td>"ts" (default), "rust" or "auto" (Rust from 10,000 rows). Same results; Rust is faster on big data</td></tr><tr><td>showSearchTime, onSearchTime</td><td>Shows "· 0.9 ms · Rust" after each search or sort, and/or calls you with { query, ms, rows, engine }</td></tr><tr><td>view, mobileBreakpoint</td><td>"table", "card" or "auto" (cards below 640 px)</td></tr><tr><td>theme</td><td>default, high-contrast, dark, color-blind, dyslexia</td></tr><tr><td>locale</td><td>"en-IN", "en-US" or "te-IN" (Telugu labels and messages)</td></tr><tr><td>pagination</td><td>{ pageSize, showSizeChanger, sizeOptions } or false</td></tr><tr><td>search, selectable</td><td>false turns each one off</td></tr><tr><td>exportable</td><td>Vanilla only: false hides the CSV button</td></tr><tr><td>agentic</td><td>Vanilla: true or { title, examples }. React: useAgenticGrid + AgenticGridBar (see Grid agents)</td></tr><tr><td>ai, inputLanguage, customRules</td><td>Built-in assistant with voice input and your own phrases in any language</td></tr><tr><td>webmcp, toolName, toolDescriptions</td><td>Expose the 11 grid tools to browser AI agents</td></tr><tr><td>selectedKeys, highlightIds, onRowClick, onSelectionChange, onSortChange</td><td>State and events</td></tr><tr><td>loading, empty, label, className</td><td>Loading state, empty message, accessible name, CSS class</td></tr></tbody></table>
+<h3>Keyboard</h3>
+<ul>
+<li>Tab into the table, then use the arrow keys to move between cells. Only one cell is in the Tab order.</li>
+<li>Home / End: first or last cell in the row. Ctrl+Home / Ctrl+End: first or last cell in the table.</li>
+<li>Page Up / Page Down change the page. Space selects a row. Enter sorts (on a header) or opens the row.</li>
+</ul>
+  </main>
+</div>
+<footer class="footer">
+  <div class="footer-in">
+    <span>© <span id="year">2026</span> YuktAI · Yuktishaalaa AI Lab · GPL-3.0</span>
+    <span><a href="https://www.npmjs.com/package/@yuktishaalaa/yuktai" target="_blank" rel="noopener noreferrer">npm<span class="sr-only"> (opens in a new tab)</span></a> · <a href="https://github.com/sandeepmiriyala03/yuktai" target="_blank" rel="noopener noreferrer">GitHub<span class="sr-only"> (opens in a new tab)</span></a> · <a href="https://aksharatantra.miriyala.in" target="_blank" rel="noopener noreferrer">Aksharatantra<span class="sr-only"> (opens in a new tab)</span></a></span>
+  </div>
+</footer>
+<div class="net" id="net" role="status" aria-live="polite" hidden></div>
+<button type="button" class="to-top" id="to-top" aria-label="Back to top" hidden>
+  <svg class="ring" viewBox="0 0 56 56" aria-hidden="true" focusable="false"><circle class="bar" id="to-top-bar" cx="28" cy="28" r="26"/></svg>
+  <svg class="i arrow" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-arrowUp"/></svg>
+</button>
+<script src="assets/js/config.js" defer></script>
+<script src="assets/js/site.js" defer></script>
+<script src="assets/js/data.js" defer></script><script src="assets/js/pages/grid.js" defer></script>
+</body>
+</html>

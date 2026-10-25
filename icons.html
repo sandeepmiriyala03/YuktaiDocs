@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#0a0f1c" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#f6f8fb" media="(prefers-color-scheme: light)">
+<meta name="description" content="YuktAI icon studio: every icon at any custom size and colour, outline or filled, with React and HTML code and PNG/SVG downloads.">
+<title>Icon studio · YuktaiDocs</title>
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icons/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="icons/icon-192.png" sizes="192x192" type="image/png">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="YuktaiDocs">
+<link rel="stylesheet" href="assets/css/site.css">
+<script src="assets/js/theme.js"></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="topbar">
+  <div class="topbar-in">
+    <a class="brand" href="./"><span class="brandmark"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-namaskar"/></svg></span><span>YuktaiDocs</span></a>
+    <span class="ver-chip" title="YuktAI version used on this site">v<span class="ver-text">5.3.9</span></span>
+    <div class="tools">
+      <button type="button" class="install-btn" id="install-btn" hidden><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-install"/></svg><span>Install app</span></button>
+      <span class="icon-btn net-chip" id="net-chip" role="img" aria-label="Network status"></span>
+      <button type="button" class="icon-btn" id="theme-btn" aria-pressed="false"><span id="theme-icon"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-moon"/></svg></span><span class="sr-only">Dark theme</span></button>
+    </div>
+  </div>
+</header>
+<div class="banner" id="docs-banner" role="status" hidden></div>
+<div class="layout">
+  <nav class="sidenav" aria-label="Documentation">
+    <h2>YuktAI docs</h2>
+    <button type="button" class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-list"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-menu"/></svg><span>Menu · Icon studio</span><svg class="i chev" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-arrowDown"/></svg></button>
+    <ul id="nav-list"><li><a href="./"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-home"/></svg>Home</a></li><li><a href="accessibility.html"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-accessibility"/></svg>Accessibility</a></li><li><a href="grid.html"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-grid"/></svg>Data grid</a></li><li><a href="agents.html"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-robot"/></svg>Grid agents</a></li><li><a href="ask.html"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-chat"/></svg>Ask page (RAG)</a></li><li><a href="page-tools.html"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-tools"/></svg>Page tools</a></li><li><a href="nextjs.html"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-code"/></svg>Next.js setup</a></li><li><a href="icons.html" aria-current="page"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-star"/></svg>Icon studio</a></li><li><a href="playground.html"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-dataObject"/></svg>Function playground</a></li><li><a href="rust.html"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-speed"/></svg>Rust engines</a></li></ul>
+    <p class="side-note">Every demo runs YuktAI <span class="ver-text">5.3.9</span> in your browser. No API keys, no server.</p>
+  </nav>
+  <main id="main" tabindex="-1">
+    <div class="page-head">
+      <p class="kicker"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-star"/></svg>Icon studio</p>
+      <h1>Icon studio</h1><p class="lead">Every YuktAI icon, read live from the YuktAI script, so new icons appear here as soon as a release adds them. Type any size, pick a colour and style, then copy the code or download a PNG or SVG.</p></div>
+<div class="card st-panel">
+  <div class="st-controls">
+    <div class="st-field st-search">
+      <label for="st-q">Search icons</label>
+      <span class="st-input"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-search"/></svg><input id="st-q" type="search" placeholder="home, lock, chart…" autocomplete="off" spellcheck="false"></span>
+    </div>
+    <fieldset class="st-seg"><legend>Style</legend><label><input type="radio" name="st-variant" value="outline" checked><span>Outline</span></label><label><input type="radio" name="st-variant" value="filled"><span>Filled</span></label></fieldset>
+    <fieldset class="st-seg" id="st-shape-field" hidden><legend>Shape</legend><label><input type="radio" name="st-shape" value="rounded" checked><span>Rounded</span></label><label><input type="radio" name="st-shape" value="circle"><span>Circle</span></label></fieldset>
+    <fieldset class="st-swatches"><legend>Colour</legend><label class="st-sw" title="Forest green #084d31"><input type="radio" name="st-color" value="#084d31" checked><span class="st-dot" style="background:#084d31"></span><span class="sr-only">Forest green</span></label><label class="st-sw" title="Deep blue #0a4a85"><input type="radio" name="st-color" value="#0a4a85"><span class="st-dot" style="background:#0a4a85"></span><span class="sr-only">Deep blue</span></label><label class="st-sw" title="Ink #0b1220"><input type="radio" name="st-color" value="#0b1220"><span class="st-dot" style="background:#0b1220"></span><span class="sr-only">Ink</span></label><label class="st-sw" title="Rust #7a3209"><input type="radio" name="st-color" value="#7a3209"><span class="st-dot" style="background:#7a3209"></span><span class="sr-only">Rust</span></label><label class="st-sw" title="Plum #5b2a86"><input type="radio" name="st-color" value="#5b2a86"><span class="st-dot" style="background:#5b2a86"></span><span class="sr-only">Plum</span></label>
+      <label class="st-sw st-custom" title="Choose any colour"><input type="color" id="st-custom" value="#7c3aed"><span class="sr-only">Custom colour</span></label>
+    </fieldset>
+  </div>
+
+  <fieldset class="st-sizebox">
+    <legend>Size (any number of pixels)</legend>
+    <div class="st-sizerow">
+      <div class="st-field"><label for="st-size">Size in px</label>
+        <span class="st-input st-num"><input id="st-size" type="number" inputmode="numeric" min="8" max="1024" step="1" value="24" aria-describedby="st-size-hint"><span aria-hidden="true">px</span></span></div>
+      <div class="st-field st-range"><label for="st-range">Slider</label><input id="st-range" type="range" min="8" max="512" step="1" value="24"></div>
+      <div class="st-field"><label for="st-stroke">Line weight</label>
+        <select id="st-stroke"><option value="auto" selected>Standard (2.5)</option><option value="1.5">Light (1.5)</option><option value="2">Regular (2)</option><option value="3">Bold (3)</option></select></div>
+    </div>
+    <div class="st-chips" role="group" aria-label="Common sizes"><button type="button" class="st-chip" data-size="16" aria-pressed="false">16</button><button type="button" class="st-chip" data-size="20" aria-pressed="false">20</button><button type="button" class="st-chip" data-size="24" aria-pressed="false">24</button><button type="button" class="st-chip" data-size="32" aria-pressed="false">32</button><button type="button" class="st-chip" data-size="48" aria-pressed="false">48</button><button type="button" class="st-chip" data-size="64" aria-pressed="false">64</button><button type="button" class="st-chip" data-size="96" aria-pressed="false">96</button><button type="button" class="st-chip" data-size="128" aria-pressed="false">128</button><button type="button" class="st-chip" data-size="192" aria-pressed="false">192</button><button type="button" class="st-chip" data-size="256" aria-pressed="false">256</button><button type="button" class="st-chip" data-size="512" aria-pressed="false">512</button></div>
+    <p class="hint" id="st-size-hint">8 to 1024 px. The tiles show up to 64 px; the preview, code and downloads use your exact size.</p>
+  </fieldset>
+
+  <div class="st-out">
+    <div class="st-preview" id="st-preview" aria-hidden="true"></div>
+    <div class="st-detail">
+      <h2 class="st-name" id="st-name">accessibility</h2>
+      <p class="st-contrast" id="st-contrast"></p>
+      <div class="st-codes">
+        <div class="st-code"><span class="st-code-label">React / Next.js</span><code id="st-react"></code><button type="button" class="st-btn" data-copy="react"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-copy"/></svg><span>Copy</span></button></div>
+        <div class="st-code"><span class="st-code-label">Plain HTML</span><code id="st-html"></code><button type="button" class="st-btn" data-copy="html"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-copy"/></svg><span>Copy</span></button></div>
+      </div>
+      <div class="st-actions">
+        <button type="button" class="st-btn primary" id="st-png"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-download"/></svg><span id="st-png-label">Download PNG · 24px</span></button>
+        <button type="button" class="st-btn" id="st-svg"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-download"/></svg><span>SVG</span></button>
+        <button type="button" class="st-btn" data-copy="svg"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-copy"/></svg><span>Copy SVG</span></button>
+      </div>
+      <form class="st-multi" id="st-multi">
+        <label for="st-sizes">Several PNG sizes at once</label>
+        <span class="st-multirow"><input id="st-sizes" class="input" value="16, 32, 48, 180, 192, 512" autocomplete="off" aria-describedby="st-sizes-hint">
+        <button type="submit" class="st-btn"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-download"/></svg><span>Download all</span></button></span>
+        <span class="hint" id="st-sizes-hint">Comma-separated, 8–1024. Handy for favicons and app icons. Your browser may ask to allow several downloads.</span>
+      </form>
+    </div>
+  </div>
+
+  <p class="st-status" id="st-status">Loading icons…</p>
+  <p class="sr-only" id="st-live" role="status" aria-live="polite"></p>
+  <div class="st-board">
+    <ul class="st-grid" id="st-grid" aria-label="Icons. Use the arrow keys to move, Enter to select." data-needs-yuktai></ul>
+    <p class="st-empty" id="st-empty" hidden>No icons match. Try “home”, “lock” or “chart”.</p>
+  </div>
+</div>
+
+<h2 id="howto">Use an icon</h2>
+<div class="grid2">
+  <div class="card">
+    <h3><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-code"/></svg> React / Next.js</h3>
+    <ol class="steps">
+      <li><code>npm install @yuktishaalaa/yuktai</code></li>
+      <li>Copy the <strong>React / Next.js</strong> line from the studio. Icon components work in Server Components too.</li>
+    </ol>
+    <div class="snippet"><div class="codehead"><span class="file">app/page.tsx</span><button type="button" class="copy-btn" data-what="app/page.tsx"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-copy"/></svg><span class="copy-label">Copy</span><span class="sr-only"> app/page.tsx</span></button></div><pre><code>import { EyeOffIcon } from "@yuktishaalaa/yuktai/icons"
+
+&lt;EyeOffIcon size={40} color="#084d31" label="Hide password" /&gt;
+&lt;EyeOffIcon size={40} color="#084d31" variant="filled" shape="circle" /&gt;</code></pre></div>
+  </div>
+  <div class="card">
+    <h3><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-file"/></svg> Plain HTML</h3>
+    <ol class="steps">
+      <li>Add the YuktAI script once, before <code>&lt;/body&gt;</code>.</li>
+      <li>Copy the <strong>Plain HTML</strong> code from the studio; it fills a placeholder with the SVG.</li>
+    </ol>
+    <div class="snippet"><div class="codehead"><span class="file">index.html</span><button type="button" class="copy-btn" data-what="index.html"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-copy"/></svg><span class="copy-label">Copy</span><span class="sr-only"> index.html</span></button></div><pre><code>&lt;span id="my-icon"&gt;&lt;/span&gt;
+&lt;script&gt;
+  document.getElementById("my-icon").innerHTML =
+    yuktai.icon("eyeOff", { size: 40, color: "#084d31", strokeWidth: 2.5, label: "Hide password" })
+&lt;/script&gt;</code></pre></div>
+    <p class="hint">No script? Use <strong>Copy SVG</strong> and paste it into your HTML, or use the downloaded file in an <code>&lt;img&gt;</code> with a meaningful <code>alt</code>.</p>
+  </div>
+</div>
+<div class="callout"><p>Add <code>label</code> when the icon means something on its own; leave it out when the text next to it says the same, so screen readers don't repeat it. Icons need 3:1 contrast with their background (WCAG 1.4.11); the studio checks it for you.</p></div>
+
+  </main>
+</div>
+<footer class="footer">
+  <div class="footer-in">
+    <span>© <span id="year">2026</span> YuktAI · Yuktishaalaa AI Lab · GPL-3.0</span>
+    <span><a href="https://www.npmjs.com/package/@yuktishaalaa/yuktai" target="_blank" rel="noopener noreferrer">npm<span class="sr-only"> (opens in a new tab)</span></a> · <a href="https://github.com/sandeepmiriyala03/yuktai" target="_blank" rel="noopener noreferrer">GitHub<span class="sr-only"> (opens in a new tab)</span></a> · <a href="https://aksharatantra.miriyala.in" target="_blank" rel="noopener noreferrer">Aksharatantra<span class="sr-only"> (opens in a new tab)</span></a></span>
+  </div>
+</footer>
+<div class="net" id="net" role="status" aria-live="polite" hidden></div>
+<button type="button" class="to-top" id="to-top" aria-label="Back to top" hidden>
+  <svg class="ring" viewBox="0 0 56 56" aria-hidden="true" focusable="false"><circle class="bar" id="to-top-bar" cx="28" cy="28" r="26"/></svg>
+  <svg class="i arrow" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-arrowUp"/></svg>
+</button>
+<script src="assets/js/config.js" defer></script>
+<script src="assets/js/site.js" defer></script>
+<script src="assets/js/pages/icons.js" defer></script>
+</body>
+</html>
