@@ -7,13 +7,7 @@
 <meta name="theme-color" content="#0a0f1c" media="(prefers-color-scheme: dark)">
 <meta name="theme-color" content="#f6f8fb" media="(prefers-color-scheme: light)">
 <meta name="description" content="YuktAI accessibility widget: live settings, a builder for YUKTAI_CONFIG and YuktAIWrapper, and the full reference.">
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-RFVRJ0S1DZ');
-</script>
-<title>Accessibility widget Â· YuktaiDocs</title>
+<title>Accessibility widget · YuktaiDocs</title>
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" href="icons/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="icons/icon-192.png" sizes="192x192" type="image/png">
@@ -22,7 +16,7 @@
 <meta name="apple-mobile-web-app-title" content="YuktaiDocs">
 <link rel="stylesheet" href="assets/css/site.css">
 <script src="assets/js/theme.js"></script>
-  <script src="assets/js/analytics.js" defer></script>
+<script src="assets/js/analytics.js" defer></script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -41,16 +35,16 @@
 <div class="layout">
   <nav class="sidenav" aria-label="Documentation">
     <h2>YuktAI docs</h2>
-    <button type="button" class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-list"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-menu"/></svg><span>Menu Â· Accessibility</span><svg class="i chev" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-arrowDown"/></svg></button>
+    <button type="button" class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-list"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-menu"/></svg><span>Menu · Accessibility</span><svg class="i chev" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-arrowDown"/></svg></button>
     <ul id="nav-list"><li><a href="./"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-home"/></svg>Home</a></li><li><a href="accessibility.html" aria-current="page"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-accessibility"/></svg>Accessibility</a></li><li><a href="grid.html"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-grid"/></svg>Data grid</a></li><li><a href="agents.html"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-robot"/></svg>Grid agents</a></li><li><a href="ask.html"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-chat"/></svg>Ask page (RAG)</a></li><li><a href="page-tools.html"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-tools"/></svg>Page tools</a></li><li><a href="nextjs.html"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-code"/></svg>Next.js setup</a></li><li><a href="icons.html"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-star"/></svg>Icon studio</a></li><li><a href="playground.html"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-dataObject"/></svg>Function playground</a></li><li><a href="rust.html"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-speed"/></svg>Rust engines</a></li></ul>
     <p class="side-note">Every demo runs YuktAI <span class="ver-text">5.3.9</span> in your browser. No API keys, no server.</p>
   </nav>
   <main id="main" tabindex="-1">
     <div class="page-head">
       <p class="kicker"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-accessibility"/></svg>Accessibility</p>
-      <h1>Accessibility widget</h1><p class="lead">One floating â™¿ button gives every visitor their own settings: contrast, dark mode, text size, a dyslexia-friendly font, colour-blind filters, reduced motion, larger targets and speak on focus. Choices are saved in the browser and restored on every page.</p></div><div class="demo"><p class="demo-label"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-play"/></svg>Live demo</p>
+      <h1>Accessibility widget</h1><p class="lead">One floating ♿ button gives every visitor their own settings: contrast, dark mode, text size, a dyslexia-friendly font, colour-blind filters, reduced motion, larger targets and speak on focus. Choices are saved in the browser and restored on every page.</p></div><div class="demo"><p class="demo-label"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-play"/></svg>Live demo</p>
   <h2 style="margin-top:0">Change this page from code</h2>
-  <p class="hint">Each button calls <code>yuktai.apply(â€¦)</code>. Watch this page change, then reset.</p>
+  <p class="hint">Each button calls <code>yuktai.apply(…)</code>. Watch this page change, then reset.</p>
   <div class="btn-row" data-needs-yuktai-buttons><button type="button" class="btn" data-a11y='{"highContrast":true}'>High contrast</button><button type="button" class="btn" data-a11y='{"darkMode":true}'>Dark mode</button><button type="button" class="btn" data-a11y='{"reduceMotion":true}'>Reduce motion</button><button type="button" class="btn" data-a11y='{"largeTargets":true}'>Large targets</button><button type="button" class="btn" data-a11y='{"dyslexiaFont":true}'>Dyslexia-friendly font</button><button type="button" class="btn" data-a11y='{"fontSizeMultiplier":1.2}'>Text 120%</button><button type="button" class="btn" data-a11y='{"speechEnabled":true}'>Speak on focus</button></div>
   <div class="controls">
     <div class="field"><label for="a11y-cb">Colour-blind filter</label>
@@ -65,7 +59,7 @@
   <pre class="out" id="a11y-out" aria-live="polite"></pre></div><div class="codetabs" data-codetabs><div class="tablist" role="tablist" aria-label="Code"><button type="button" role="tab" id="a11y-code-next-tab" data-fw="next" aria-controls="a11y-code-next" aria-selected="true" tabindex="0"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-code"/></svg>Next.js / React</button><button type="button" role="tab" id="a11y-code-vanilla-tab" data-fw="vanilla" aria-controls="a11y-code-vanilla" aria-selected="false" tabindex="-1"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-file"/></svg>Vanilla JS</button></div><div role="tabpanel" id="a11y-code-next" aria-labelledby="a11y-code-next-tab"><div class="codefile"><div class="codehead"><span class="file" id="a11y-code-next-code-name">app/components/A11yButtons.tsx</span><button type="button" class="copy-btn" data-what="app/components/A11yButtons.tsx"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-copy"/></svg><span class="copy-label">Copy</span><span class="sr-only"> app/components/A11yButtons.tsx</span></button></div><pre><code id="a11y-code-next-code">"use client"
 import { wcagPlugin } from "@yuktishaalaa/yuktai"
 
-// The â™¿ button comes from &lt;YuktAIWrapper showAccessibility&gt;. To change
+// The ♿ button comes from &lt;YuktAIWrapper showAccessibility&gt;. To change
 // settings from your own UI, call the engine directly:
 export function HighContrastButton() {
   return (
@@ -75,12 +69,12 @@ export function HighContrastButton() {
   )
 }</code></pre></div></div><div role="tabpanel" id="a11y-code-vanilla" aria-labelledby="a11y-code-vanilla-tab" hidden><div class="codefile"><div class="codehead"><span class="file" id="a11y-code-vanilla-code-name">app.js</span><button type="button" class="copy-btn" data-what="app.js"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-copy"/></svg><span class="copy-label">Copy</span><span class="sr-only"> app.js</span></button></div><pre><code id="a11y-code-vanilla-code">// Settings are saved in localStorage ("yuktai-a11y-prefs"), the same key the npm package uses.
 yuktai.apply({ highContrast: true })        // one or more settings
-yuktai.apply({ fontSizeMultiplier: 1.2 })   // 0.8 â€“ 1.3
+yuktai.apply({ fontSizeMultiplier: 1.2 })   // 0.8 – 1.3
 yuktai.apply({ colorBlindMode: "deuteranopia" })
 yuktai.getSettings()                        // current settings
 yuktai.reset()                              // back to defaults
-yuktai.open()                               // open the â™¿ dialog
-yuktai.openTools("qa")                      // open the ðŸ›  page tools on a tab</code></pre></div></div></div>
+yuktai.open()                               // open the ♿ dialog
+yuktai.openTools("qa")                      // open the 🛠 page tools on a tab</code></pre></div></div></div>
 <h2 id="builder">Set up the floating buttons</h2>
 <p>Choose the options; the code below updates as you go. <strong>Try it on this site</strong> applies your setup to every page here (this tab only), so you can see it before you copy it.</p>
 <div class="demo"><p class="demo-label"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-play"/></svg>Builder</p>
@@ -91,7 +85,7 @@ yuktai.openTools("qa")                      // open the ðŸ›  page tools on 
     <div class="field"><label for="cfg-tab">Page tools opens on</label><select id="cfg-tab"><option value="copilot">Copilot</option><option value="qa">QA report</option><option value="forms">Forms</option><option value="design">Design</option><option value="ask" selected>Ask page</option><option value="voice">Voice</option></select></div>
     <div class="field"><label for="cfg-voice">Voice language</label><select id="cfg-voice"><option value="en-IN">English (India)</option><option value="te-IN">Telugu</option><option value="hi-IN">Hindi</option><option value="en-US">English (US)</option></select></div>
     <fieldset class="field"><legend>Options</legend>
-      <label class="check"><input type="checkbox" id="cfg-tools" checked> ðŸ›  page tools button</label>
+      <label class="check"><input type="checkbox" id="cfg-tools" checked> 🛠 page tools button</label>
       <label class="check"><input type="checkbox" id="cfg-autofix"> Auto-fix on load</label>
       <label class="check"><input type="checkbox" id="cfg-skip"> Add skip links</label>
     </fieldset>
@@ -101,14 +95,14 @@ yuktai.openTools("qa")                      // open the ðŸ›  page tools on 
     <button type="button" class="btn" id="cfg-default"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-undo"/></svg>Back to the site default</button>
   </div>
   <p class="hint" id="cfg-state"></p></div><div class="codetabs" data-codetabs><div class="tablist" role="tablist" aria-label="Code"><button type="button" role="tab" id="cfg-code-next-tab" data-fw="next" aria-controls="cfg-code-next" aria-selected="true" tabindex="0"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-code"/></svg>Next.js / React</button><button type="button" role="tab" id="cfg-code-vanilla-tab" data-fw="vanilla" aria-controls="cfg-code-vanilla" aria-selected="false" tabindex="-1"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-file"/></svg>Vanilla JS</button></div><div role="tabpanel" id="cfg-code-next" aria-labelledby="cfg-code-next-tab"><div class="codefile"><div class="codehead"><span class="file" id="cfg-code-next-code-name">app/YuktaiClient.tsx</span><button type="button" class="copy-btn" data-what="app/YuktaiClient.tsx"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-copy"/></svg><span class="copy-label">Copy</span><span class="sr-only"> app/YuktaiClient.tsx</span></button></div><pre><code id="cfg-code-next-code">// generated</code></pre></div></div><div role="tabpanel" id="cfg-code-vanilla" aria-labelledby="cfg-code-vanilla-tab" hidden><div class="codefile"><div class="codehead"><span class="file" id="cfg-code-vanilla-code-name">index.html</span><button type="button" class="copy-btn" data-what="index.html"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-copy"/></svg><span class="copy-label">Copy</span><span class="sr-only"> index.html</span></button></div><pre><code id="cfg-code-vanilla-code">&lt;!-- generated --&gt;</code></pre></div></div></div>
-<div class="callout"><p><strong>Next.js:</strong> the React wrapper takes <code>position</code> and engine <code>config</code> (for example <code>autoFix</code>). The page tools there are the ðŸ’¬ Ask, ðŸ¤– Agent and âš¡ Vibe Coder buttons; see <a href="nextjs.html">Next.js setup</a> for every button.</p></div>
-<h2 id="reference">Reference</h2><table class="ref"><caption><code>window.YUKTAI_CONFIG</code> (set before the script tag)</caption><thead><tr><th scope="col">Option</th><th scope="col">Default</th><th scope="col">What it does</th></tr></thead><tbody><tr><td>position</td><td>"left"</td><td>Side for the floating buttons: "left" or "right"</td></tr><tr><td>primaryColor</td><td>"#0f766e"</td><td>Button colour; keep at least 4.5:1 against white</td></tr><tr><td>title</td><td>"Accessibility"</td><td>Settings dialog title</td></tr><tr><td>showPageTools</td><td>false</td><td>Adds the ðŸ›  button with the six page tools</td></tr><tr><td>defaultTab</td><td>"qa"</td><td>First tab of the page tools: copilot, qa, forms, design, ask, voice</td></tr><tr><td>voiceLang</td><td>"en-IN"</td><td>Speech recognition language, for example "te-IN"</td></tr><tr><td>generate(q, ctx), summarize(text)</td><td>â€”</td><td>Optional hooks for your own model (Ask tab)</td></tr><tr><td>config</td><td>â€”</td><td>Engine options, for example <code>{ autoFix: false, showSkipLinks: false }</code></td></tr><tr><td>applyOnLoad</td><td>true</td><td>Run the engine on load (restores saved settings)</td></tr><tr><td>autoInit</td><td>true</td><td>Set false and call <code>yuktai.init()</code> yourself</td></tr></tbody></table><table class="ref"><caption>Widget methods</caption><thead><tr><th scope="col">Method</th><th scope="col">What it does</th></tr></thead><tbody><tr><td>yuktai.open() / close()</td><td>Open or close the â™¿ settings dialog</td></tr><tr><td>yuktai.openTools(tab) / closeTools()</td><td>Open the ðŸ›  page tools on a tab</td></tr><tr><td>yuktai.apply(settings)</td><td>Apply and save settings (returns a promise)</td></tr><tr><td>yuktai.reset()</td><td>Back to the defaults</td></tr><tr><td>yuktai.getSettings()</td><td>The current settings</td></tr><tr><td>yuktai.init()</td><td>Add the buttons (only with autoInit: false)</td></tr></tbody></table><table class="ref"><caption>Settings</caption><thead><tr><th scope="col">Key</th><th scope="col">Values</th></tr></thead><tbody><tr><td>highContrast, darkMode, reduceMotion, largeTargets, dyslexiaFont, speechEnabled</td><td>true / false</td></tr><tr><td>fontSizeMultiplier</td><td>0.8, 0.9, 1, 1.1, 1.2, 1.3</td></tr><tr><td>colorBlindMode</td><td>none, deuteranopia, protanopia, tritanopia, achromatopsia</td></tr></tbody></table>
+<div class="callout"><p><strong>Next.js:</strong> the React wrapper takes <code>position</code> and engine <code>config</code> (for example <code>autoFix</code>). The page tools there are the 💬 Ask, 🤖 Agent and ⚡ Vibe Coder buttons; see <a href="nextjs.html">Next.js setup</a> for every button.</p></div>
+<h2 id="reference">Reference</h2><table class="ref"><caption><code>window.YUKTAI_CONFIG</code> (set before the script tag)</caption><thead><tr><th scope="col">Option</th><th scope="col">Default</th><th scope="col">What it does</th></tr></thead><tbody><tr><td>position</td><td>"left"</td><td>Side for the floating buttons: "left" or "right"</td></tr><tr><td>primaryColor</td><td>"#0f766e"</td><td>Button colour; keep at least 4.5:1 against white</td></tr><tr><td>title</td><td>"Accessibility"</td><td>Settings dialog title</td></tr><tr><td>showPageTools</td><td>false</td><td>Adds the 🛠 button with the six page tools</td></tr><tr><td>defaultTab</td><td>"qa"</td><td>First tab of the page tools: copilot, qa, forms, design, ask, voice</td></tr><tr><td>voiceLang</td><td>"en-IN"</td><td>Speech recognition language, for example "te-IN"</td></tr><tr><td>generate(q, ctx), summarize(text)</td><td>—</td><td>Optional hooks for your own model (Ask tab)</td></tr><tr><td>config</td><td>—</td><td>Engine options, for example <code>{ autoFix: false, showSkipLinks: false }</code></td></tr><tr><td>applyOnLoad</td><td>true</td><td>Run the engine on load (restores saved settings)</td></tr><tr><td>autoInit</td><td>true</td><td>Set false and call <code>yuktai.init()</code> yourself</td></tr></tbody></table><table class="ref"><caption>Widget methods</caption><thead><tr><th scope="col">Method</th><th scope="col">What it does</th></tr></thead><tbody><tr><td>yuktai.open() / close()</td><td>Open or close the ♿ settings dialog</td></tr><tr><td>yuktai.openTools(tab) / closeTools()</td><td>Open the 🛠 page tools on a tab</td></tr><tr><td>yuktai.apply(settings)</td><td>Apply and save settings (returns a promise)</td></tr><tr><td>yuktai.reset()</td><td>Back to the defaults</td></tr><tr><td>yuktai.getSettings()</td><td>The current settings</td></tr><tr><td>yuktai.init()</td><td>Add the buttons (only with autoInit: false)</td></tr></tbody></table><table class="ref"><caption>Settings</caption><thead><tr><th scope="col">Key</th><th scope="col">Values</th></tr></thead><tbody><tr><td>highContrast, darkMode, reduceMotion, largeTargets, dyslexiaFont, speechEnabled</td><td>true / false</td></tr><tr><td>fontSizeMultiplier</td><td>0.8, 0.9, 1, 1.1, 1.2, 1.3</td></tr><tr><td>colorBlindMode</td><td>none, deuteranopia, protanopia, tritanopia, achromatopsia</td></tr></tbody></table>
   </main>
 </div>
 <footer class="footer">
   <div class="footer-in">
-    <span>Â© <span id="year">2026</span> YuktAI Â· Yuktishaalaa AI Lab Â· GPL-3.0</span>
-    <span><a href="https://www.npmjs.com/package/@yuktishaalaa/yuktai" target="_blank" rel="noopener noreferrer">npm<span class="sr-only"> (opens in a new tab)</span></a> Â· <a href="https://github.com/sandeepmiriyala03/yuktai" target="_blank" rel="noopener noreferrer">GitHub<span class="sr-only"> (opens in a new tab)</span></a> Â· <a href="https://aksharatantra.miriyala.in" target="_blank" rel="noopener noreferrer">Aksharatantra<span class="sr-only"> (opens in a new tab)</span></a></span>
+    <span>© <span id="year">2026</span> YuktAI · Yuktishaalaa AI Lab · GPL-3.0</span>
+    <span><a href="https://www.npmjs.com/package/@yuktishaalaa/yuktai" target="_blank" rel="noopener noreferrer">npm<span class="sr-only"> (opens in a new tab)</span></a> · <a href="https://github.com/sandeepmiriyala03/yuktai" target="_blank" rel="noopener noreferrer">GitHub<span class="sr-only"> (opens in a new tab)</span></a> · <a href="https://aksharatantra.miriyala.in" target="_blank" rel="noopener noreferrer">Aksharatantra<span class="sr-only"> (opens in a new tab)</span></a></span>
   </div>
 </footer>
 <div class="net" id="net" role="status" aria-live="polite" hidden></div>
