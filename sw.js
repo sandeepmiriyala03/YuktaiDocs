@@ -2,7 +2,7 @@
 //   • this site's files: cached at install, served from cache, refreshed in the background
 //   • the YuktAI script (jsDelivr or unpkg, any version): cached on first use
 // Bump CACHE whenever you publish a change, so visitors get the new files.
-const CACHE = "yuktaidocs-v5"
+const CACHE = "yuktaidocs-v6"
 const CORE = [
   "./",
   "index.html",
@@ -16,6 +16,7 @@ const CORE = [
   "playground.html",
   "rust.html",
   "python.html",
+  "php.html",
   "404.html",
   "manifest.webmanifest",
   "assets/css/site.css",

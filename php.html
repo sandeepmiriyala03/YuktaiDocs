@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#0a0f1c" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#f6f8fb" media="(prefers-color-scheme: light)">
+<meta name="description" content="composer require yuktishaalaa/yuktai: add the YuktAI accessibility widget, page tools and data grid to plain PHP, Laravel and WordPress pages in one line.">
+<title>PHP (Composer) · YuktaiDocs</title>
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icons/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="icons/icon-192.png" sizes="192x192" type="image/png">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="YuktaiDocs">
+<link rel="stylesheet" href="assets/css/site.css">
+<script src="assets/js/theme.js"></script>
+<script src="assets/js/analytics.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="topbar">
+  <div class="topbar-in">
+    <a class="brand" href="./"><span class="brandmark"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-namaskar"/></svg></span><span>YuktaiDocs</span></a>
+    <span class="ver-chip" title="YuktAI version used on this site">v<span class="ver-text">5.3.9</span></span>
+    <div class="tools">
+      <button type="button" class="install-btn" id="install-btn" hidden><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-install"/></svg><span>Install app</span></button>
+      <span class="icon-btn net-chip" id="net-chip" role="img" aria-label="Network status"></span>
+      <button type="button" class="icon-btn" id="theme-btn" aria-pressed="false"><span id="theme-icon"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-moon"/></svg></span><span class="sr-only">Dark theme</span></button>
+    </div>
+  </div>
+</header>
+<div class="banner" id="docs-banner" role="status" hidden></div>
+<div class="layout">
+  <nav class="sidenav" aria-label="Documentation">
+    <h2>YuktAI docs</h2>
+    <button type="button" class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-list"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-menu"/></svg><span>Menu · PHP (Composer)</span><svg class="i chev" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-arrowDown"/></svg></button>
+    <ul id="nav-list"><li><a href="./"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-home"/></svg>Home</a></li><li><a href="accessibility.html"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-accessibility"/></svg>Accessibility</a></li><li><a href="grid.html"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-grid"/></svg>Data grid</a></li><li><a href="agents.html"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-robot"/></svg>Grid agents</a></li><li><a href="ask.html"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-chat"/></svg>Ask page (RAG)</a></li><li><a href="page-tools.html"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-tools"/></svg>Page tools</a></li><li><a href="nextjs.html"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-code"/></svg>Next.js setup</a></li><li><a href="python.html"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-hub"/></svg>Python (pip)</a></li><li><a href="php.html" aria-current="page"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-layout"/></svg>PHP (Composer)</a></li><li><a href="icons.html"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-star"/></svg>Icon studio</a></li><li><a href="playground.html"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-dataObject"/></svg>Function playground</a></li><li><a href="rust.html"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-speed"/></svg>Rust engines</a></li></ul>
+    <p class="side-note">Every demo runs YuktAI <span class="ver-text">5.3.9</span> in your browser. No API keys, no server.</p>
+  </nav>
+  <main id="main" tabindex="-1">
+    <div class="page-head">
+      <p class="kicker"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-layout"/></svg>PHP (Composer)</p>
+      <h1>YuktAI for PHP</h1><p class="lead">The <code>yuktishaalaa/yuktai</code> package adds YuktAI to any PHP page in one line: plain PHP, Laravel, WordPress or Symfony. You get the ♿ accessibility widget, the 🛠 page tools and everything in <code>window.yuktai</code>. YuktAI still runs in the visitor's browser. The package only writes the right script tags for you.</p></div>
+<ul class="checks">
+  <li><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-check"/></svg><span>No dependencies, PHP 8.1 or newer.</span></li>
+  <li><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-check"/></svg><span>No API keys, no server calls, no telemetry.</span></li>
+  <li><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-check"/></svg><span>Same features and options as the npm and Python packages.</span></li>
+</ul>
+<h2 id="install">1. Install</h2>
+<div class="codetabs"><div class="codefile"><div class="codehead"><span class="file" id="php-install-name">Terminal</span><button type="button" class="copy-btn" data-what="Terminal"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-copy"/></svg><span class="copy-label">Copy</span><span class="sr-only"> Terminal</span></button></div><pre><code id="php-install">composer require yuktishaalaa/yuktai</code></pre></div></div>
+<p class="hint">On Packagist: <a href="https://packagist.org/packages/yuktishaalaa/yuktai" target="_blank" rel="noopener noreferrer">packagist.org/packages/yuktishaalaa/yuktai<span class="sr-only"> (opens in a new tab)</span></a></p>
+
+<h2 id="plain">2. Plain PHP</h2>
+<div class="codetabs"><div class="codefile"><div class="codehead"><span class="file" id="php-plain-name">index.php (before &lt;/body&gt;)</span><button type="button" class="copy-btn" data-what="index.php (before &lt;/body&gt;)"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-copy"/></svg><span class="copy-label">Copy</span><span class="sr-only"> index.php (before &lt;/body&gt;)</span></button></div><pre><code id="php-plain">&lt;?= \Yuktai\Yuktai::script([&#x27;position&#x27; =&gt; &#x27;right&#x27;, &#x27;showPageTools&#x27; =&gt; true]) ?&gt;</code></pre></div></div>
+<p>Composer's <code>vendor/autoload.php</code> must be loaded once, as in any Composer project.</p>
+
+<h2 id="laravel">3. Laravel</h2>
+<div class="codetabs"><div class="codefile"><div class="codehead"><span class="file" id="php-laravel-name">resources/views/layouts/app.blade.php (before &lt;/body&gt;)</span><button type="button" class="copy-btn" data-what="resources/views/layouts/app.blade.php (before &lt;/body&gt;)"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-copy"/></svg><span class="copy-label">Copy</span><span class="sr-only"> resources/views/layouts/app.blade.php (before &lt;/body&gt;)</span></button></div><pre><code id="php-laravel">{!! \Yuktai\Yuktai::script([&#x27;showPageTools&#x27; =&gt; true]) !!}</code></pre></div></div>
+<p>Use <code>{!! !!}</code>, not <code>{{ }}</code>: the result is HTML and must not be escaped again.</p>
+
+<h2 id="wordpress">4. WordPress</h2>
+<div class="codetabs"><div class="codefile"><div class="codehead"><span class="file" id="php-wp-name">functions.php (your theme)</span><button type="button" class="copy-btn" data-what="functions.php (your theme)"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-copy"/></svg><span class="copy-label">Copy</span><span class="sr-only"> functions.php (your theme)</span></button></div><pre><code id="php-wp">add_action(&#x27;wp_footer&#x27;, function () {
+    echo \Yuktai\Yuktai::script([&#x27;position&#x27; =&gt; &#x27;right&#x27;, &#x27;showPageTools&#x27; =&gt; true]);
+});</code></pre></div></div>
+<p>WordPress loads <code>wp_footer</code> just before <code>&lt;/body&gt;</code> on every page.</p>
+
+<h2 id="options">Options</h2>
+<table class="ref"><caption>Keys of the array passed to <code>Yuktai::script()</code></caption><thead><tr><th scope="col">Option</th><th scope="col">What it does</th></tr></thead><tbody>
+<tr><td>version</td><td>YuktAI release to load. The package pins a tested release; <code>"latest"</code> follows new releases.</td></tr>
+<tr><td>position</td><td><code>"left"</code> or <code>"right"</code></td></tr>
+<tr><td>primaryColor</td><td>Button colour, for example <code>"#0a4a85"</code></td></tr>
+<tr><td>title</td><td>Title of the settings dialog (Telugu works)</td></tr>
+<tr><td>showPageTools</td><td>Adds the 🛠 page tools button</td></tr>
+<tr><td>defaultTab</td><td><code>copilot</code>, <code>qa</code>, <code>forms</code>, <code>design</code>, <code>ask</code> or <code>voice</code></td></tr>
+<tr><td>voiceLang</td><td>Speech language, for example <code>"te-IN"</code></td></tr>
+<tr><td>autoFix, showSkipLinks</td><td>Accessibility engine options</td></tr>
+<tr><td>extra</td><td>Any other <code>YUKTAI_CONFIG</code> key, as <code>['key' =&gt; value]</code></td></tr>
+<tr><td>cdn</td><td><code>"jsdelivr"</code> (default) or <code>"unpkg"</code></td></tr>
+<tr><td>defer</td><td><code>true</code> by default</td></tr>
+<tr><td>nonce</td><td>For pages with a Content Security Policy</td></tr>
+</tbody></table>
+
+<h2 id="safety">Safe by design</h2>
+<div class="grid2">
+  <div class="card"><h3><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-shieldCheck"/></svg> Safe JSON</h3><p>Options are written with <code>JSON_HEX_TAG</code> and <code>JSON_HEX_AMP</code>, so a value like <code>&lt;/script&gt;</code> can't break out of the tag.</p></div>
+  <div class="card"><h3><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-check"/></svg> Typos caught</h3><p>A wrong value or an unknown option name (like <code>showPagetools</code>) throws <code>InvalidArgumentException</code> instead of being ignored.</p></div>
+  <div class="card"><h3><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-lock"/></svg> CSP ready</h3><p>Pass <code>'nonce' =&gt; $nonce</code> and both script tags get it. Add <code>cdn.jsdelivr.net</code> to <code>script-src</code>, and <code>'wasm-unsafe-eval'</code> for the Rust engines.</p></div>
+  <div class="card"><h3><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-code"/></svg> Tested</h3><p>PHPUnit tests run on PHP 8.1, 8.2, 8.3 and 8.4 for every push.</p></div>
+</div>
+
+  </main>
+</div>
+<footer class="footer">
+  <div class="footer-in">
+    <span>© <span id="year">2026</span> YuktAI · Yuktishaalaa AI Lab · GPL-3.0 · This site counts visits with Google Analytics; YuktAI itself sends no data.</span>
+    <span><a href="https://www.npmjs.com/package/@yuktishaalaa/yuktai" target="_blank" rel="noopener noreferrer">npm<span class="sr-only"> (opens in a new tab)</span></a> · <a href="https://github.com/sandeepmiriyala03/yuktai" target="_blank" rel="noopener noreferrer">GitHub<span class="sr-only"> (opens in a new tab)</span></a> · <a href="https://aksharatantra.miriyala.in" target="_blank" rel="noopener noreferrer">Aksharatantra<span class="sr-only"> (opens in a new tab)</span></a></span>
+  </div>
+</footer>
+<div class="net" id="net" role="status" aria-live="polite" hidden></div>
+<button type="button" class="to-top" id="to-top" aria-label="Back to top" hidden>
+  <svg class="ring" viewBox="0 0 56 56" aria-hidden="true" focusable="false"><circle class="bar" id="to-top-bar" cx="28" cy="28" r="26"/></svg>
+  <svg class="i arrow" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-arrowUp"/></svg>
+</button>
+<script src="assets/js/config.js" defer></script>
+<script src="assets/js/site.js" defer></script>
+<script src="assets/js/data.js" defer></script>
+</body>
+</html>
