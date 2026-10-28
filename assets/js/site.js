@@ -35,8 +35,14 @@
       try { fn(window.yuktai); } catch (e) { console.error("[YuktaiDocs]", e); }
     });
   }
+  /* Try every CDN with the chosen version, then with the fallback version. */
+  var tries = [];
+  [cfg.version, cfg.fallbackVersion].forEach(function (v, k) {
+    if (!v || (k && v === cfg.version)) return;
+    cfg.cdns.forEach(function (u) { tries.push({ url: u.replace("{v}", v), version: v }); });
+  });
   function load(i) {
-    if (i >= cfg.cdns.length) {
+    if (i >= tries.length) {
       state = "failed";
       $$("[data-needs-yuktai]").forEach(function (el) {
         el.innerHTML = '<p class="loading-note">' + useIcon("wifiOff") + " YuktAI " + esc(cfg.version) +
@@ -46,11 +52,18 @@
       return;
     }
     var s = document.createElement("script");
-    s.src = cfg.cdns[i].replace("{v}", cfg.version);
+    s.src = tries[i].url;
     s.crossOrigin = "anonymous";
     s.onload = function () {
       if (window.yuktai && typeof window.yuktai.renderGrid === "function") {
         state = "ready"; Docs.source = s.src;
+        if (tries[i].version !== cfg.version) {
+          // The chosen version is not on the CDN yet: the fallback is running.
+          var wanted = cfg.version;
+          cfg.version = Docs.version = tries[i].version;
+          $$(".ver-text").forEach(function (el) { el.textContent = cfg.version; });
+          $$("pre code").forEach(function (c) { c.textContent = c.textContent.split("@" + wanted).join("@" + cfg.version); });
+        }
         document.documentElement.setAttribute("data-yuktai", "ready");
         flush();
       } else load(i + 1);

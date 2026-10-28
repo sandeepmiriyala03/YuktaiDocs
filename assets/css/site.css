@@ -308,3 +308,22 @@ body > div[role="alert"][aria-live="assertive"][style*="0, 90, 156"]{background:
 .st-multirow input{flex:1 1 220px;min-width:0}
 .st-preview{overflow:hidden}
 .codefile+.codefile{border-top:1px solid var(--d-line)}
+
+/* ── Icon studio: download all ── */
+.st-all{display:grid;gap:14px;padding:16px;border:2px solid var(--d-accent);border-radius:16px;background:var(--d-panel)}
+.st-all-head h2{display:flex;align-items:center;gap:10px;margin:0;font-size:1.25rem}
+.st-all-head h2 svg{color:var(--d-accent)}
+.st-all-head .hint{margin:4px 0 0}
+.st-all-opts{display:flex;flex-wrap:wrap;gap:14px 22px;align-items:flex-end}
+.st-all-opts fieldset{border:0;margin:0;padding:0;min-width:0}
+.st-all-opts legend{display:block;font-size:.85rem;font-weight:800;letter-spacing:.04em;text-transform:uppercase;color:var(--d-muted);margin-bottom:6px;padding:0}
+.st-checks{display:flex;flex-wrap:wrap;gap:0 18px}
+.st-checks legend{width:100%}
+.st-all-actions{display:flex;flex-wrap:wrap;gap:8px}
+.st-all-actions .st-btn{min-height:48px}
+.st-all-actions .st-btn[aria-busy="true"]{cursor:progress;border-style:dashed}
+.st-all-status{margin:0;font-weight:700;color:var(--d-accent);min-height:1.5em}
+.st-all-status.warn{color:var(--d-rust)}
+.st-all-note{margin:0}
+.st-seg input:disabled+span{border-style:dashed;cursor:not-allowed;color:var(--d-muted)}
+@media (max-width:600px){.st-all{padding:12px}.st-all-actions .st-btn{flex:1 1 100%;justify-content:center}}

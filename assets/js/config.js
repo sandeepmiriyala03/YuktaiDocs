@@ -8,7 +8,9 @@
  * (kept for this browser tab; ?v=default goes back).
  */
 window.DOCS_CONFIG = {
-  version: "5.3.10",
+  version: "5.3.11",
+  // Used only if `version` cannot be loaded (for example, not published yet).
+  fallbackVersion: "5.3.10",
   // Tried in order; the second one is used only if the first fails.
   cdns: [
     "https://cdn.jsdelivr.net/npm/@yuktishaalaa/yuktai@{v}/vanilla/index.min.js",

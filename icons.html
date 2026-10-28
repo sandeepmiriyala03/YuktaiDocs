@@ -44,7 +44,7 @@
     <div class="page-head">
       <p class="kicker"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-star"/></svg>Icon studio</p>
       <h1>Icon studio</h1><p class="lead">Every YuktAI icon, read live from the YuktAI script, so new icons appear here as soon as a release adds them. Type any size, pick a colour and style, then copy the code or download a PNG or SVG.</p></div>
-<div class="callout"><p><strong>Original designs:</strong> every YuktAI icon is drawn for YuktAI and free to use under GPL-3.0. Checked against Lucide (2,176 icons) and Feather (287 icons): no icon, and no single line, is the same. 13 icons (plus, minus, reset, search, sortUp, sortDown, left, right, first, last, undo, redo, pen) get their original YuktAI shapes in 5.3.11.</p></div>
+<div class="callout"><p><strong>Original designs:</strong> every YuktAI icon is drawn for YuktAI and free to use under GPL-3.0. Checked against Lucide (2,176 icons) and Feather (287 icons): no icon, and no single line, is the same. In 5.3.11, 13 icons (plus, minus, reset, search, sortUp, sortDown, left, right, first, last, undo, redo, pen) get their original YuktAI shapes, and the palette icon is clearer.</p></div>
 <div class="card st-panel">
   <div class="st-controls">
     <div class="st-field st-search">
@@ -93,6 +93,33 @@
       </form>
     </div>
   </div>
+
+  <section class="st-all" aria-labelledby="st-all-title">
+    <div class="st-all-head">
+      <h2 id="st-all-title"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-download"/></svg>Download all icons</h2>
+      <p class="hint">Uses the style, colour, shape, size and line weight you chose above.</p>
+    </div>
+    <div class="st-all-opts">
+      <fieldset class="st-seg"><legend>Which icons</legend>
+        <label><input type="radio" name="st-which" value="all" checked><span id="st-which-all">All</span></label><label><input type="radio" name="st-which" value="shown"><span id="st-which-shown">Search results</span></label>
+      </fieldset>
+      <fieldset class="st-seg"><legend>Sheet background</legend>
+        <label><input type="radio" name="st-bg" value="white" checked><span>White</span></label><label><input type="radio" name="st-bg" value="dark"><span>Dark</span></label><label><input type="radio" name="st-bg" value="none"><span>Transparent</span></label>
+      </fieldset>
+      <fieldset class="st-checks"><legend>Sheet options</legend>
+        <label class="check"><input type="checkbox" id="st-names" checked> Show names</label>
+        <label class="check"><input type="checkbox" id="st-hd" checked> Sharp (2×) image</label>
+      </fieldset>
+    </div>
+    <div class="st-all-actions">
+      <button type="button" class="st-btn primary" id="st-sheet"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-image"/></svg><span>One picture (PNG)</span></button>
+      <button type="button" class="st-btn" id="st-zip-svg"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-file"/></svg><span>ZIP of SVG files</span></button>
+      <button type="button" class="st-btn" id="st-zip-png"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-grid"/></svg><span>ZIP of PNG files</span></button>
+      <button type="button" class="st-btn" id="st-sprite"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-code"/></svg><span>SVG sprite (developers)</span></button>
+    </div>
+    <p class="st-all-status" id="st-all-status" role="status" aria-live="polite"></p>
+    <p class="hint st-all-note">The picture shows icons at your size up to 128 px; ZIP files use your exact size. Everything is made in your browser, offline too.</p>
+  </section>
 
   <p class="st-status" id="st-status">Loading icons…</p>
   <p class="sr-only" id="st-live" role="status" aria-live="polite"></p>
