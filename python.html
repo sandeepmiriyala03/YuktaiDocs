@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#0a0f1c" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#f6f8fb" media="(prefers-color-scheme: light)">
+<meta name="description" content="pip install yuktai: add the YuktAI accessibility widget, page tools and data grid to Django, Flask and FastAPI pages in one line.">
+<title>Python (pip) · YuktaiDocs</title>
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icons/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="icons/icon-192.png" sizes="192x192" type="image/png">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="YuktaiDocs">
+<link rel="stylesheet" href="assets/css/site.css">
+<script src="assets/js/theme.js"></script>
+<script src="assets/js/analytics.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="topbar">
+  <div class="topbar-in">
+    <a class="brand" href="./"><span class="brandmark"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-namaskar"/></svg></span><span>YuktaiDocs</span></a>
+    <span class="ver-chip" title="YuktAI version used on this site">v<span class="ver-text">5.3.9</span></span>
+    <div class="tools">
+      <button type="button" class="install-btn" id="install-btn" hidden><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-install"/></svg><span>Install app</span></button>
+      <span class="icon-btn net-chip" id="net-chip" role="img" aria-label="Network status"></span>
+      <button type="button" class="icon-btn" id="theme-btn" aria-pressed="false"><span id="theme-icon"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-moon"/></svg></span><span class="sr-only">Dark theme</span></button>
+    </div>
+  </div>
+</header>
+<div class="banner" id="docs-banner" role="status" hidden></div>
+<div class="layout">
+  <nav class="sidenav" aria-label="Documentation">
+    <h2>YuktAI docs</h2>
+    <button type="button" class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-list"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-menu"/></svg><span>Menu · Python (pip)</span><svg class="i chev" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-arrowDown"/></svg></button>
+    <ul id="nav-list"><li><a href="./"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-home"/></svg>Home</a></li><li><a href="accessibility.html"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-accessibility"/></svg>Accessibility</a></li><li><a href="grid.html"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-grid"/></svg>Data grid</a></li><li><a href="agents.html"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-robot"/></svg>Grid agents</a></li><li><a href="ask.html"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-chat"/></svg>Ask page (RAG)</a></li><li><a href="page-tools.html"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-tools"/></svg>Page tools</a></li><li><a href="nextjs.html"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-code"/></svg>Next.js setup</a></li><li><a href="python.html" aria-current="page"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-hub"/></svg>Python (pip)</a></li><li><a href="icons.html"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-star"/></svg>Icon studio</a></li><li><a href="playground.html"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-dataObject"/></svg>Function playground</a></li><li><a href="rust.html"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-speed"/></svg>Rust engines</a></li></ul>
+    <p class="side-note">Every demo runs YuktAI <span class="ver-text">5.3.9</span> in your browser. No API keys, no server.</p>
+  </nav>
+  <main id="main" tabindex="-1">
+    <div class="page-head">
+      <p class="kicker"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-hub"/></svg>Python (pip)</p>
+      <h1>YuktAI for Python</h1><p class="lead">The <code>yuktai</code> package adds YuktAI to pages made by Django, Flask or FastAPI in one line: the ♿ accessibility widget, the 🛠 page tools and everything in <code>window.yuktai</code>. YuktAI still runs in the visitor's browser. The package only writes the right script tags for you.</p></div>
+<ul class="checks">
+  <li><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-check"/></svg><span>No dependencies, Python 3.9 or newer.</span></li>
+  <li><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-check"/></svg><span>No API keys, no server calls, no telemetry.</span></li>
+  <li><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-check"/></svg><span>Same features and options as the npm package and the script tag.</span></li>
+</ul>
+<h2 id="install">1. Install</h2>
+<div class="codetabs"><div class="codefile"><div class="codehead"><span class="file" id="py-install-name">Terminal</span><button type="button" class="copy-btn" data-what="Terminal"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-copy"/></svg><span class="copy-label">Copy</span><span class="sr-only"> Terminal</span></button></div><pre><code id="py-install">pip install yuktai</code></pre></div></div>
+<p class="hint">On PyPI: <a href="https://pypi.org/project/yuktai/" target="_blank" rel="noopener noreferrer">pypi.org/project/yuktai<span class="sr-only"> (opens in a new tab)</span></a></p>
+
+<h2 id="flask">2. Flask</h2>
+<div class="codetabs"><div class="codefile"><div class="codehead"><span class="file" id="py-flask-name">app.py</span><button type="button" class="copy-btn" data-what="app.py"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-copy"/></svg><span class="copy-label">Copy</span><span class="sr-only"> app.py</span></button></div><pre><code id="py-flask">from flask import Flask
+import yuktai
+
+app = Flask(__name__)
+yuktai.init_app(app, position=&quot;right&quot;, show_page_tools=True)</code></pre></div>
+<div class="codefile"><div class="codehead"><span class="file" id="py-flask-tpl-name">templates/base.html (before &lt;/body&gt;)</span><button type="button" class="copy-btn" data-what="templates/base.html (before &lt;/body&gt;)"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-copy"/></svg><span class="copy-label">Copy</span><span class="sr-only"> templates/base.html (before &lt;/body&gt;)</span></button></div><pre><code id="py-flask-tpl">{{ yuktai_script() }}</code></pre></div></div>
+
+<h2 id="fastapi">3. FastAPI</h2>
+<div class="codetabs"><div class="codefile"><div class="codehead"><span class="file" id="py-fastapi-name">main.py</span><button type="button" class="copy-btn" data-what="main.py"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-copy"/></svg><span class="copy-label">Copy</span><span class="sr-only"> main.py</span></button></div><pre><code id="py-fastapi">from fastapi.templating import Jinja2Templates
+import yuktai
+
+templates = Jinja2Templates(directory=&quot;templates&quot;)
+yuktai.init_jinja(templates.env, show_page_tools=True)</code></pre></div>
+<div class="codefile"><div class="codehead"><span class="file" id="py-fastapi-tpl-name">templates/base.html (before &lt;/body&gt;)</span><button type="button" class="copy-btn" data-what="templates/base.html (before &lt;/body&gt;)"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-copy"/></svg><span class="copy-label">Copy</span><span class="sr-only"> templates/base.html (before &lt;/body&gt;)</span></button></div><pre><code id="py-fastapi-tpl">{{ yuktai_script() }}</code></pre></div></div>
+
+<h2 id="django">4. Django</h2>
+<div class="codetabs"><div class="codefile"><div class="codehead"><span class="file" id="py-django-name">settings.py</span><button type="button" class="copy-btn" data-what="settings.py"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-copy"/></svg><span class="copy-label">Copy</span><span class="sr-only"> settings.py</span></button></div><pre><code id="py-django">INSTALLED_APPS = [
+    # ...
+    &quot;yuktai&quot;,
+]
+
+# optional defaults for every page
+YUKTAI = {&quot;position&quot;: &quot;right&quot;, &quot;show_page_tools&quot;: True}</code></pre></div>
+<div class="codefile"><div class="codehead"><span class="file" id="py-django-tpl-name">templates/base.html (before &lt;/body&gt;)</span><button type="button" class="copy-btn" data-what="templates/base.html (before &lt;/body&gt;)"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-copy"/></svg><span class="copy-label">Copy</span><span class="sr-only"> templates/base.html (before &lt;/body&gt;)</span></button></div><pre><code id="py-django-tpl">{% load yuktai_tags %}
+{% yuktai_script %}</code></pre></div></div>
+<p>Change options for one page: <code>{% yuktai_script default_tab="ask" %}</code></p>
+
+<h2 id="any">5. Any other Python code</h2>
+<div class="codetabs"><div class="codefile"><div class="codehead"><span class="file" id="py-any-name">any.py</span><button type="button" class="copy-btn" data-what="any.py"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-copy"/></svg><span class="copy-label">Copy</span><span class="sr-only"> any.py</span></button></div><pre><code id="py-any">import yuktai
+
+html = yuktai.script_tag(position=&quot;right&quot;, show_page_tools=True, voice_lang=&quot;te-IN&quot;)
+# put html just before &lt;/body&gt;</code></pre></div></div>
+<p>The result is ready HTML: a small <code>window.YUKTAI_CONFIG</code> script (only when you pass options) and the YuktAI script from jsDelivr.</p>
+
+<h2 id="options">Options</h2>
+<table class="ref"><caption>Arguments of <code>script_tag()</code> and <code>yuktai_script</code></caption><thead><tr><th scope="col">Option</th><th scope="col">What it does</th></tr></thead><tbody>
+<tr><td>version</td><td>YuktAI release to load. The package pins a tested release; <code>"latest"</code> follows new releases.</td></tr>
+<tr><td>position</td><td><code>"left"</code> or <code>"right"</code></td></tr>
+<tr><td>primary_color</td><td>Button colour, for example <code>"#0a4a85"</code></td></tr>
+<tr><td>title</td><td>Title of the settings dialog (Telugu works)</td></tr>
+<tr><td>show_page_tools</td><td>Adds the 🛠 page tools button</td></tr>
+<tr><td>default_tab</td><td><code>copilot</code>, <code>qa</code>, <code>forms</code>, <code>design</code>, <code>ask</code> or <code>voice</code></td></tr>
+<tr><td>voice_lang</td><td>Speech language, for example <code>"te-IN"</code></td></tr>
+<tr><td>auto_fix, show_skip_links</td><td>Accessibility engine options</td></tr>
+<tr><td>extra</td><td>Any other <code>YUKTAI_CONFIG</code> key, as a dict</td></tr>
+<tr><td>cdn</td><td><code>"jsdelivr"</code> (default) or <code>"unpkg"</code></td></tr>
+<tr><td>nonce</td><td>For pages with a Content Security Policy</td></tr>
+</tbody></table>
+
+<h2 id="safety">Safe by design</h2>
+<div class="grid2">
+  <div class="card"><h3><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-shieldCheck"/></svg> Safe JSON</h3><p>Options are written as JSON with <code>&lt;</code>, <code>&gt;</code> and <code>&amp;</code> escaped, so a value like <code>&lt;/script&gt;</code> can't break out of the tag.</p></div>
+  <div class="card"><h3><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-check"/></svg> Checked values</h3><p>Position, colour, tab, version, CDN and nonce are checked. A wrong value raises <code>ValueError</code> instead of writing broken HTML.</p></div>
+  <div class="card"><h3><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-lock"/></svg> CSP ready</h3><p>Pass <code>nonce=</code> and both script tags get it. Add <code>cdn.jsdelivr.net</code> to <code>script-src</code>, and <code>'wasm-unsafe-eval'</code> for the Rust engines.</p></div>
+  <div class="card"><h3><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-code"/></svg> Not escaped twice</h3><p>The tag is marked safe for Jinja2 and Django, so autoescaping does not turn it into text.</p></div>
+</div>
+
+<h2 id="next">Coming next</h2>
+<p>Version 0.2 brings YuktAI's <a href="rust.html">Rust engines</a> to Python: fast grid search and the BM25 index for page RAG, with the same results as in the browser.</p>
+
+  </main>
+</div>
+<footer class="footer">
+  <div class="footer-in">
+    <span>© <span id="year">2026</span> YuktAI · Yuktishaalaa AI Lab · GPL-3.0 · This site counts visits with Google Analytics; YuktAI itself sends no data.</span>
+    <span><a href="https://www.npmjs.com/package/@yuktishaalaa/yuktai" target="_blank" rel="noopener noreferrer">npm<span class="sr-only"> (opens in a new tab)</span></a> · <a href="https://github.com/sandeepmiriyala03/yuktai" target="_blank" rel="noopener noreferrer">GitHub<span class="sr-only"> (opens in a new tab)</span></a> · <a href="https://aksharatantra.miriyala.in" target="_blank" rel="noopener noreferrer">Aksharatantra<span class="sr-only"> (opens in a new tab)</span></a></span>
+  </div>
+</footer>
+<div class="net" id="net" role="status" aria-live="polite" hidden></div>
+<button type="button" class="to-top" id="to-top" aria-label="Back to top" hidden>
+  <svg class="ring" viewBox="0 0 56 56" aria-hidden="true" focusable="false"><circle class="bar" id="to-top-bar" cx="28" cy="28" r="26"/></svg>
+  <svg class="i arrow" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-arrowUp"/></svg>
+</button>
+<script src="assets/js/config.js" defer></script>
+<script src="assets/js/site.js" defer></script>
+<script src="assets/js/data.js" defer></script>
+</body>
+</html>
