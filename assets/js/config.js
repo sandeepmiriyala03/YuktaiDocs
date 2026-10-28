@@ -8,7 +8,7 @@
  * (kept for this browser tab; ?v=default goes back).
  */
 window.DOCS_CONFIG = {
-  version: "5.3.9",
+  version: "5.3.10",
   // Tried in order; the second one is used only if the first fails.
   cdns: [
     "https://cdn.jsdelivr.net/npm/@yuktishaalaa/yuktai@{v}/vanilla/index.min.js",
