@@ -3,15 +3,16 @@
   "use strict";
   var $ = function (id) { return document.getElementById(id); };
   var f = {
-    launcher: $("nx-launcher"), a11y: $("nx-a11y"), rag: $("nx-rag"), agent: $("nx-agent"), vibe: $("nx-vibe"),
-    pos: $("nx-pos"), engine: $("nx-engine"), src: $("nx-src"), autofix: $("nx-autofix")
+    launcher: $("nx-launcher"), a11y: $("nx-a11y"), rag: $("nx-rag"), agent: $("nx-agent"), vibe: $("nx-vibe"), tools: $("nx-tools"),
+    pos: $("nx-pos"), engine: $("nx-engine"), tab: $("nx-tab"), src: $("nx-src"), autofix: $("nx-autofix")
   };
   var BUTTONS = [
     ["launcher", "spark", "Launcher", "shows or hides the others"],
     ["a11y", "accessibility", "Accessibility", "settings dialog"],
     ["rag", "chat", "Ask page", "questions about the page"],
     ["agent", "robot", "Agent", "page agent"],
-    ["vibe", "wand", "Vibe Coder", "developer tool"]
+    ["vibe", "wand", "Vibe Coder", "developer tool"],
+    ["tools", "tools", "Page tools", "QA, forms, design, ask, voice"]
   ];
 
   function render() {
@@ -25,8 +26,10 @@
     if (c.rag) p.push("      showRag");
     if (c.agent) p.push("      showAgent");
     if (c.vibe) p.push("      showVibeCoder");
+    if (c.tools) p.push("      showPageTools");
+    if (c.tools && c.tab !== "copilot") p.push('      pageToolsTab="' + c.tab + '"');
     if (!c.launcher && !c.a11y && !c.vibe) p.push("      showAccessibility={false}   // keeps every button opt-in");
-    if (c.engine && c.rag) p.push('      engine="' + c.engine + '"');
+    if (c.engine && (c.rag || c.tools)) p.push('      engine="' + c.engine + '"');
     if (c.autofix) p.push("      config={{ autoFix: true }}");
 
     var dir = c.src;
@@ -42,9 +45,8 @@
       "        <YuktaiClient>{children}</YuktaiClient>\n      </body>\n    </html>\n  )\n}", 1, dir + "/layout.tsx");
 
     /* vanilla equivalent */
-    var tools = c.rag || c.agent;
     var lines = ['    position: "' + c.pos + '",'];
-    if (tools) lines.push("    showPageTools: true,          // 🛠: Copilot, QA, Forms, Design, Ask page, Voice", '    defaultTab: "' + (c.rag ? "ask" : "copilot") + '",');
+    if (c.tools) lines.push("    showPageTools: true,          // 🛠: Copilot, QA, Forms, Design, Ask page, Voice", '    defaultTab: "' + c.tab + '",');
     lines.push("    config: { autoFix: " + c.autofix + " }");
     var notes = [];
     if (!c.a11y) notes.push("<!-- The vanilla build always shows ♿. To show no floating buttons, set autoInit: false. -->");
@@ -57,7 +59,7 @@
       '<script src="https://cdn.jsdelivr.net/npm/@yuktishaalaa/yuktai@' + Docs.version + '/vanilla/index.min.js"></script>');
 
     /* preview */
-    var shown = BUTTONS.filter(function (b) { return c[b[0]]; });
+    var shown = BUTTONS.filter(function (b) { return c[b[0]]; }).reverse(); // top of the stack first
     var prev = $("nx-preview");
     prev.innerHTML = shown.length
       ? '<ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px;align-items:' + (c.pos === "left" ? "flex-start" : "flex-end") + '">' +
@@ -72,7 +74,8 @@
     $("nx-mode").textContent = c.launcher
       ? "Visitors first see only ✨; it opens the other buttons and remembers the choice."
       : shown.length ? "These buttons are always visible at the " + c.pos + " side." : "Tick at least one button to add YuktAI's floating tools.";
-    f.engine.disabled = !c.rag;
+    f.engine.disabled = !c.rag && !c.tools;
+    f.tab.disabled = !c.tools;
   }
   Object.keys(f).forEach(function (k) { f[k].addEventListener("change", render); });
   render();

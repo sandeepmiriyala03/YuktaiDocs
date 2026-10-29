@@ -85,14 +85,17 @@ yuktai.reviewDesign({ root, minFontSize: 16 })
 const copilot = yuktai.createA11yCopilot({ root })
 copilot.scan(); copilot.applyAllFixes(); copilot.undoAll()</code></pre></div></div></div>
 <h2 id="panel">2. All six tools in one panel</h2>
-<p>This is the panel behind the 🛠 button, placed inline. It checks this whole page; the tools never audit their own UI.</p>
+<p>This is the panel behind the 🛠 button, placed inline. It checks this whole page; the tools never audit their own UI, floating buttons included. Small targets pass when they have 24px of space around them (WCAG 2.5.8).</p>
 <div class="demo"><p class="demo-label"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-play"/></svg>Live demo</p><div id="pt-panel" data-needs-yuktai><p class="loading-note">Loading…</p></div></div><div class="codetabs" data-codetabs><div class="tablist" role="tablist" aria-label="Code"><button type="button" role="tab" id="pt2-code-next-tab" data-fw="next" aria-controls="pt2-code-next" aria-selected="true" tabindex="0"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-code"/></svg>Next.js / React</button><button type="button" role="tab" id="pt2-code-vanilla-tab" data-fw="vanilla" aria-controls="pt2-code-vanilla" aria-selected="false" tabindex="-1"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-file"/></svg>Vanilla JS</button></div><div role="tabpanel" id="pt2-code-next" aria-labelledby="pt2-code-next-tab"><div class="codefile"><div class="codehead"><span class="file" id="pt2-code-next-code-name">app/tools/page.tsx</span><button type="button" class="copy-btn" data-what="app/tools/page.tsx"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-copy"/></svg><span class="copy-label">Copy</span><span class="sr-only"> app/tools/page.tsx</span></button></div><pre><code id="pt2-code-next-code">"use client"
 import { AgenticPanel } from "@yuktishaalaa/yuktai"
 
 export default function Tools() {
   // tabs: copilot, qa, forms, design, ask, voice
   return &lt;AgenticPanel defaultTab="qa" voiceLang="te-IN" engine="rust" /&gt;
-}</code></pre></div></div><div role="tabpanel" id="pt2-code-vanilla" aria-labelledby="pt2-code-vanilla-tab" hidden><div class="codefile"><div class="codehead"><span class="file" id="pt2-code-vanilla-code-name">tools.html</span><button type="button" class="copy-btn" data-what="tools.html"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-copy"/></svg><span class="copy-label">Copy</span><span class="sr-only"> tools.html</span></button></div><pre><code id="pt2-code-vanilla-code">&lt;div id="tools"&gt;&lt;/div&gt;
+}
+
+// or a floating 🛠 button on every page (5.3.11), in your client wrapper:
+// &lt;YuktAIWrapper showPageTools pageToolsTab="qa" voiceLang="te-IN"&gt;{children}&lt;/YuktAIWrapper&gt;</code></pre></div></div><div role="tabpanel" id="pt2-code-vanilla" aria-labelledby="pt2-code-vanilla-tab" hidden><div class="codefile"><div class="codehead"><span class="file" id="pt2-code-vanilla-code-name">tools.html</span><button type="button" class="copy-btn" data-what="tools.html"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-copy"/></svg><span class="copy-label">Copy</span><span class="sr-only"> tools.html</span></button></div><pre><code id="pt2-code-vanilla-code">&lt;div id="tools"&gt;&lt;/div&gt;
 &lt;script&gt;
   yuktai.mountAgenticPanel("#tools", { defaultTab: "qa", voiceLang: "te-IN", engine: "rust" })
 &lt;/script&gt;

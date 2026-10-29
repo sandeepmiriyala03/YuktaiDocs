@@ -42,7 +42,7 @@
   <main id="main" tabindex="-1">
     <div class="page-head">
       <p class="kicker"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-speed"/></svg>Rust engines</p>
-      <h1>Rust engines</h1><p class="lead">YuktAI has two optional engines written in Rust and compiled to WebAssembly: grid search and number/date sorting, and the page RAG search. They return exactly the same results as TypeScript, only faster on big data. Time them here on your own sizes.</p></div>
+      <h1>Rust engines</h1><p class="lead">YuktAI has two engines written in Rust and compiled to WebAssembly: grid search and number/date sorting, and the page RAG search. Since 5.3.11 they are the default. They return exactly the same results as TypeScript, only faster on big data. Time them here on your own sizes.</p></div>
 <ul class="status-list" id="rs-support" aria-live="polite"><li><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-info"/></svg>Checking WebAssembly…</li></ul>
 <h2 id="grid">1. Grid: TypeScript vs Rust</h2>
 <div class="demo"><p class="demo-label"><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-play"/></svg>Benchmark</p>
@@ -85,7 +85,7 @@ const hits = index.search("security engineer in chennai", 5)</code></pre></div><
 <div class="grid2">
   <div class="card"><h3><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-dataObject"/></svg> Small and self-contained</h3><p>The Rust code is <code>no_std</code>, compiled to WebAssembly and embedded in the YuktAI script as base64. There is no extra file to host, no bundler setting, and it works offline.</p></div>
   <div class="card"><h3><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-check"/></svg> Same results, proved</h3><p>Rust runs the same rules as TypeScript (Unicode-aware tokens, prefix matching, BM25 with the same idf), and parity tests check that every query returns the same rows and passages in the same order.</p></div>
-  <div class="card"><h3><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-shieldCheck"/></svg> Safe fallback</h3><p>The engine loads only when you set <code>engine</code>. If WebAssembly is missing or blocked, TypeScript runs instead and <code>grid.engine</code> says <code>"ts"</code>.</p></div>
+  <div class="card"><h3><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-shieldCheck"/></svg> Safe fallback</h3><p>Rust is the default since 5.3.11 (<code>engine: "ts"</code> keeps TypeScript only). If WebAssembly is missing or blocked, TypeScript runs instead with the same results, and <code>grid.engine</code> says <code>"ts"</code>.</p></div>
   <div class="card"><h3><svg class="i" aria-hidden="true" focusable="false"><use href="assets/icons.svg#i-lock"/></svg> Content Security Policy</h3><p>Sites with a CSP need <code>'wasm-unsafe-eval'</code> in <code>script-src</code> for the Rust engines. This site's <code>netlify.toml</code> shows a working policy.</p></div>
 </div>
 
